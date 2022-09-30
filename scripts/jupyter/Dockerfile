@@ -5,9 +5,9 @@ LABEL author="Meysam Azad <meysam@licenseware.io>"
 ARG PIP_EXTRAS=/pip.d
 ARG NOTEBOOK_VERSION=6.4.12
 
-ENV PIP_EXTRAS=${PIP_EXTRAS}
+ENV PIP_EXTRAS=${PIP_EXTRAS} PORT=8888
 
-EXPOSE 8888
+EXPOSE ${PORT}
 
 USER root
 RUN pip install -U pip jupyter notebook==${NOTEBOOK_VERSION}
