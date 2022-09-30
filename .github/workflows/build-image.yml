@@ -1,13 +1,14 @@
+name: build-image
+
 on:
   push:
     branches:
       - main
-      - meysam/dev
   schedule:
     - cron: 0 0 * * *
 
 env:
-  JUPYTER_IMAGE_REPOSITORY: jupyter
+  JUPYTER_IMAGE_REPOSITORY: ${{ github.repository_owner }}/jupyter
   JUPYTER_IMAGE_TAG: latest
   REGISTRY: ghcr.io
 
