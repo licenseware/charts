@@ -1,8 +1,7 @@
 replicaCount: 1
 
 image:
-  hub: ghcr.io
-  repository: licenseware/jupyter
+  repository: ghcr.io/licenseware/jupyter
   tag: latest
   pullPolicy: Always
 
