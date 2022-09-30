@@ -59,6 +59,10 @@ spec:
             successThreshold: {{ .successThreshold }}
             failureThreshold: {{ .failureThreshold }}
           {{- end }}
+          {{- with .Values.extraEnvFrom }}
+          envFrom:
+            {{- tpl (toYaml .) $ | nindent 12 }}
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.extraVolumeMounts }}
