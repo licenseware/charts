@@ -6,4 +6,4 @@ if [[ -d ${PIP_EXTRAS} ]]; then
     find ${PIP_EXTRAS} -name 'requirements*.txt' -exec pip install -r {} \;
 fi
 
-exec ~/.local/bin/jupyter notebook --config /jupyter_notebook_config.py
+exec jupyter notebook --config /jupyter_notebook_config.py

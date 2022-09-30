@@ -9,7 +9,9 @@ ENV PIP_EXTRAS=${PIP_EXTRAS}
 
 EXPOSE 8888
 
+USER root
 RUN pip install -U pip jupyter notebook==${NOTEBOOK_VERSION}
+USER ${USER}
 
 COPY --chown=${USER} . /
 
