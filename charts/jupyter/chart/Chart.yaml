@@ -1,0 +1,7 @@
+name: jupyter
+version: 0.1.0
+apiVersion: v2
+description: Jupyter Notebook
+type: application
+appVersion: 6.4.12
+icon: https://github.com/licenseware/helm-charts/blob/main/static/png/jupyter.png
