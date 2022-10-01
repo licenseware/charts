@@ -1,5 +1,5 @@
 name: jupyter
-version: 0.1.2
+version: 0.1.0
 apiVersion: v2
 description: Jupyter Notebook
 type: application
