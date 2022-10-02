@@ -1,0 +1,26 @@
+apiVersion: v1
+entries:
+  jupyter:
+  - apiVersion: v2
+    appVersion: 6.4.12
+    created: "2022-10-02T05:01:40.727272536Z"
+    description: Jupyter Notebook
+    digest: de2de641b2411e617f2ff577208abde9d9158b6621c8c5660fd31fcac4673eee
+    icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
+    name: jupyter
+    type: application
+    urls:
+    - jupyter-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 6.4.12
+    created: "2022-10-02T05:01:40.726262977Z"
+    description: Jupyter Notebook
+    digest: 8347b571b9cdc68ded4bee531db8c065326ee90462b3c7a5db943d6f9b9bdeea
+    icon: https://github.com/licenseware/helm-charts/raw/main/static/png/jupyter.png
+    name: jupyter
+    type: application
+    urls:
+    - jupyter-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-10-02T05:01:40.725147312Z"
