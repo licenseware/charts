@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
-if [[ -d ${PIP_EXTRAS} ]]; then
+# check if pip-extras is not empty and the directory is not empty
+if [[ -d ${PIP_EXTRAS} ]] && [[ -n "$(ls -A ${PIP_EXTRAS})" ]]; then
     echo "Installing from ${PIP_EXTRAS} ..."
     ls ${PIP_EXTRAS}
     find ${PIP_EXTRAS} -name 'requirements*.txt' -exec pip install -r {} \;
