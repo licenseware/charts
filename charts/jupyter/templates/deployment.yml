@@ -59,10 +59,14 @@ spec:
             successThreshold: {{ .successThreshold }}
             failureThreshold: {{ .failureThreshold }}
           {{- end }}
-          {{- with .Values.extraEnvFrom }}
           envFrom:
+            {{- with .Values.extraEnvFrom }}
             {{- tpl (toYaml .) $ | nindent 12 }}
-          {{- end }}
+            {{- end }}
+            - configMapRef:
+                name: {{ include "jupyter.fullname" . }}
+            - secretRef:
+                name: {{ include "jupyter.fullname" . }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.extraVolumeMounts }}
