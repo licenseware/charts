@@ -3,9 +3,9 @@ entries:
   jupyter:
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-03T06:35:55.295357957Z"
+    created: "2022-10-03T06:47:55.168009382Z"
     description: Jupyter Notebook
-    digest: 33d72b5ae4ac50ed1c344613b8817ad814c81f8207228078aa666ed481665996
+    digest: 04df2571ca38b84b4ae3bbbf3e0d6909a660cdefe0c89836451ad695cd3da64a
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
     name: jupyter
     type: application
@@ -14,7 +14,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-03T06:35:55.29467896Z"
+    created: "2022-10-03T06:47:55.167148781Z"
     description: Jupyter Notebook
     digest: de2de641b2411e617f2ff577208abde9d9158b6621c8c5660fd31fcac4673eee
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
@@ -25,7 +25,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-03T06:35:55.294007362Z"
+    created: "2022-10-03T06:47:55.16568188Z"
     description: Jupyter Notebook
     digest: 8347b571b9cdc68ded4bee531db8c065326ee90462b3c7a5db943d6f9b9bdeea
     icon: https://github.com/licenseware/helm-charts/raw/main/static/png/jupyter.png
@@ -34,4 +34,4 @@ entries:
     urls:
     - jupyter-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-03T06:35:55.293143066Z"
+generated: "2022-10-03T06:47:55.164399878Z"
