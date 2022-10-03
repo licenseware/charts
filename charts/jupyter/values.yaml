@@ -1,9 +1,13 @@
+config:
+  port: 8888
+  token: "" # defaults to random generated alphanumeric
+
 replicaCount: 1
 
 image:
   repository: ghcr.io/licenseware/jupyter
-  tag: latest
-  pullPolicy: Always
+  tag: ""
+  pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 nameOverride: ""
@@ -31,7 +35,7 @@ securityContext:
 
 service:
   type: ClusterIP
-  targetPort: 8888
+  targetPort: "{{ .Values.config.port }}"
   port: 80
   portName: http
   protocol: TCP

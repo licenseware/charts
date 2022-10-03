@@ -20,3 +20,5 @@
   echo "Visit http://127.0.0.1:8080 to use your application"
   kubectl --namespace {{ .Release.Namespace }} port-forward $POD_NAME 8080:$CONTAINER_PORT
 {{- end }}
+2. To access the jupyter you will need a token which you can get by running the following:
+  kubectl get secret --namespace {{ .Release.Namespace }} {{ include "jupyter.fullname" . }} -o jsonpath="{.data.TOKEN}" | base64 --decode

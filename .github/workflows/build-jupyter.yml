@@ -1,4 +1,4 @@
-name: build-image
+name: build-jupyter
 
 on:
   push:
@@ -8,8 +8,7 @@ on:
     - cron: 0 0 * * *
 
 env:
-  JUPYTER_IMAGE_REPOSITORY: ${{ github.repository_owner }}/jupyter
-  JUPYTER_IMAGE_TAG: latest
+  IMAGE_REPOSITORY: ${{ github.repository_owner }}/jupyter
   REGISTRY: ghcr.io
 
 jobs:
@@ -29,6 +28,9 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
+      - name: Set image tag from Chart.yaml
+        run: |
+          echo "IMAGE_TAG=$(grep appVersion ./charts/jupyter/Chart.yaml | awk '{print $2}')" >> $GITHUB_ENV
       - name: Build Jupyter Notebook
         uses: docker/build-push-action@v2
         with:
@@ -37,4 +39,5 @@ jobs:
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ env.JUPYTER_IMAGE_REPOSITORY }}:${{ env.JUPYTER_IMAGE_TAG }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_REPOSITORY }}:${{ env.IMAGE_TAG }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_REPOSITORY }}:latest

@@ -8,8 +8,8 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.targetPort }}
-      protocol: {{ default "TCP" .Values.service.protocol }}
-      name: {{ default "http" .Values.service.name }}
+      targetPort: {{ tpl .Values.service.targetPort $ }}
+      protocol: {{ .Values.service.protocol }}
+      name: {{ .Values.service.portName }}
   selector:
     {{- include "jupyter.selectorLabels" . | nindent 4 }}
