@@ -35,7 +35,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: {{ .Values.service.portName }}
-              containerPort: {{ .Values.service.targetPort }}
+              containerPort: {{ tpl .Values.service.targetPort $ }}
               protocol: {{ .Values.service.protocol }}
           {{- with .Values.livenessProbe }}
           livenessProbe:
