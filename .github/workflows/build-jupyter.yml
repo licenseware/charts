@@ -5,7 +5,8 @@ on:
     branches:
       - main
   schedule:
-    - cron: 0 0 * * *
+    # build the images daily (to keep everything up-to-date)
+    - cron: "0 0 * * *"
 
 env:
   IMAGE_REPOSITORY: ${{ github.repository_owner }}/jupyter
@@ -41,3 +42,15 @@ jobs:
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_REPOSITORY }}:${{ env.IMAGE_TAG }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_REPOSITORY }}:latest
+
+      - name: Build Jupyter Notebook - ODBC
+        uses: docker/build-push-action@v2
+        with:
+          context: ./scripts/jupyter/
+          labels: |
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_REPOSITORY }}:${{ env.IMAGE_TAG }}-odbc
+            ${{ env.REGISTRY }}/${{ env.IMAGE_REPOSITORY }}:latest-odbc
+          target: odbc

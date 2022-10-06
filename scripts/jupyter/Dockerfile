@@ -1,4 +1,4 @@
-FROM ghcr.io/licenseware/licenseware-sdk-v2:latest AS latest
+FROM ghcr.io/licenseware/licenseware-sdk-v2:latest AS base
 
 LABEL author="Meysam Azad <meysam@licenseware.io>"
 
@@ -16,3 +16,18 @@ USER ${USER}
 COPY --chown=${USER} . /
 
 CMD ["/entrypoint.sh"]
+
+FROM base AS odbc
+
+USER root
+
+RUN apt install -y gnupg && \
+    curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
+    curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list && \
+    apt update && \
+    apt install -y build-essential unixodbc-dev && \
+    ACCEPT_EULA=Y apt install -y msodbcsql18
+
+USER ${USER}
+
+FROM base AS latest
