@@ -3,9 +3,9 @@ entries:
   jupyter:
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-06T06:33:33.268002171Z"
+    created: "2022-10-10T03:44:31.636897339Z"
     description: Jupyter Notebook
-    digest: 6a7abf8eadca9760515c0118dec5a860798791d02a79b055029083ed7f9df93d
+    digest: f9ff5a86307dc4c376ffa96c8d20d56d7dd2297cc5bd673db8c5bf5023878d54
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
     name: jupyter
     type: application
@@ -14,7 +14,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-06T06:33:33.266385167Z"
+    created: "2022-10-10T03:44:31.636094443Z"
     description: Jupyter Notebook
     digest: de2de641b2411e617f2ff577208abde9d9158b6621c8c5660fd31fcac4673eee
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
@@ -25,7 +25,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-06T06:33:33.265520565Z"
+    created: "2022-10-10T03:44:31.635356547Z"
     description: Jupyter Notebook
     digest: 8347b571b9cdc68ded4bee531db8c065326ee90462b3c7a5db943d6f9b9bdeea
     icon: https://github.com/licenseware/helm-charts/raw/main/static/png/jupyter.png
@@ -37,13 +37,13 @@ entries:
   mssql:
   - apiVersion: v2
     appVersion: 2019-latest
-    created: "2022-10-06T06:33:33.268922273Z"
+    created: "2022-10-10T03:44:31.637615035Z"
     description: Microsoft SQL Server 2019 Express
-    digest: 14b11bb4e907d1617ec5d4a5bb18974bf4792fc814d406cad6aeb1c7ba04a1a7
+    digest: db0a1317de17f31be806574ed1095b0e26597b68f32829e43bf48b6dd2e61c3f
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/mssql.png
     name: mssql
     type: application
     urls:
     - mssql-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-06T06:33:33.264428663Z"
+generated: "2022-10-10T03:44:31.634038653Z"
