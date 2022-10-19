@@ -1,5 +1,6 @@
 ARG BASE_IMAGE_REPOSITORY=ghcr.io/licenseware/licenseware-sdk-v2
 ARG BASE_IMAGE_TAG=latest
+ARG ODBC_DIR=/odbc
 
 FROM ${BASE_IMAGE_REPOSITORY}:${BASE_IMAGE_TAG} AS base
 
@@ -20,7 +21,6 @@ COPY --chown=${USER} . /
 
 CMD ["/entrypoint.sh"]
 
-ARG ODBC_DIR=/odbc
 FROM curlimages/curl as odbc-init
 
 ARG ODBC_DIR
