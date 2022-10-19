@@ -18,7 +18,7 @@ configMapPairs:
   LWARE_IDENTITY_USER: ""
   MONGO_DATABASE_NAME: "{{ .Values.configMapPairs.APP_SHORT_NAME }}"
   PORT: "5000"
-  QUEUE_NAME: ""
+  QUEUE_NAME: "{{ .Values.configMapPairs.APP_SHORT_NAME }}"
   REDIS_DB: "0"
   REDIS_HOST: "{{ if .Values.redis.create }}{{ .Release.Name }}-redis-master{{ end }}"
   REDIS_PORT: "6379"
@@ -32,7 +32,7 @@ extraVolumeMounts: []
 
 extraVolumes: []
 
-fullnameOverride: ""
+fullnameOverride: "{{ .Release.Name }}"
 
 global:
   affinity: {}
@@ -42,12 +42,10 @@ global:
     minReplicas: 1
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
-  containerName: ""
-  livenessProbe: {}
+  containerName: "{{ .Values.configMapPairs.APP_SHORT_NAME }}"
   nodeSelector: {}
   podAnnotations: {}
   podSecurityContext: {}
-  readinessProbe: {}
   replicaCount: 1
   resources:
     limits:
@@ -80,12 +78,44 @@ image:
 imagePullSecrets: []
 
 jupyter:
+  config:
+    token: ""
   create: false
+  extraEnvFrom:
+    - configMapRef:
+        name: "{{ .Release.Name }}"
+    - secretRef:
+        name: "{{ .Release.Name }}"
+  extraVolumeMounts:
+    []
+    # - mountPath: /home/licenseware/service
+    #   name: app
+    # - mountPath: /pip.d
+    #   name: app
+  extraVolumes:
+    []
+    # - name: app
+    #   persistentVolumeClaim:
+    #     claimName: "{{ .Release.Name }}-source-code"
+  ingress:
+    enabled: false
+    hosts:
+      - host: jupyter.{{ .Values.configMapPairs.APP_SHORT_NAME }}.localhost
+        paths:
+          - path: /
+            pathType: Prefix
 
 mongo-express:
   create: false
   image:
     tag: 1.0.0-alpha
+  ingress:
+    enabled: true
+    hosts:
+      - host: mongo-express.TODO.localhost
+        paths:
+          - /
+    pathType: Prefix
   mongodbEnableAdmin: true
   mongodbAuthDatabase: admin
   mongodbAdminUsername: root
@@ -98,6 +128,10 @@ mongodb:
   create: false
   persistence:
     enabled: true
+  service:
+    nodePorts:
+      mongodb: 30100
+    type: ClusterIP
 
 nameOverride: ""
 
@@ -166,7 +200,7 @@ singleBinaryApp:
           - chart-example.local
         secretName: chart-example-tls
   labels:
-    licenseware.io/type: web
+    licenseware.io/type: single-binary
   livenessProbe:
     failureThreshold: 3
     httpGet:
