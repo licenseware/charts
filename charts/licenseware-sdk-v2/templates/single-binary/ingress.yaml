@@ -21,17 +21,17 @@ metadata:
     {{- with .Values.singleBinaryApp.labels }}
     {{- tpl (toYaml .) $ | nindent 4 }}
     {{- end }}
-  {{- with .Values.ingress.annotations }}
+  {{- with .Values.singleBinaryApp.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  {{- if and .Values.ingress.className (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion) }}
-  ingressClassName: {{ .Values.ingress.className }}
+  {{- if and .Values.singleBinaryApp.ingress.className (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion) }}
+  ingressClassName: {{ .Values.singleBinaryApp.ingress.className }}
   {{- end }}
-  {{- if .Values.ingress.tls }}
+  {{- if .Values.singleBinaryApp.ingress.tls }}
   tls:
-    {{- range .Values.ingress.tls }}
+    {{- range .Values.singleBinaryApp.ingress.tls }}
     - hosts:
         {{- range .hosts }}
         - {{ . | quote }}
@@ -40,7 +40,7 @@ spec:
     {{- end }}
   {{- end }}
   rules:
-    {{- range .Values.ingress.hosts }}
+    {{- range .Values.singleBinaryApp.ingress.hosts }}
     - host: {{ .host | quote }}
       http:
         paths:
