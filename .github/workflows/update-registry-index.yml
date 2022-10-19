@@ -31,6 +31,7 @@ jobs:
       - name: Update chart packages
         run: |
           for chart in $(find charts/ -name Chart.yaml -exec dirname {} \;); do
+            helm dep update $chart;
             helm package -d docs/ $chart;
           done
       - name: Update registry index

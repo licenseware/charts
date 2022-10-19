@@ -84,6 +84,8 @@ jupyter:
 
 mongo-express:
   create: false
+  image:
+    tag: 1.0.0-alpha
   mongodbEnableAdmin: true
   mongodbAuthDatabase: admin
   mongodbAdminUsername: root
