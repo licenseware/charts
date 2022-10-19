@@ -133,7 +133,7 @@ mongodb:
       mongodb: 30100
     type: ClusterIP
 
-nameOverride: ""
+nameOverride: "{{ .Release.Name }}"
 
 persistence:
   sourceCode:
