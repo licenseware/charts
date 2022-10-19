@@ -1,0 +1,21 @@
+{{- if .Values.persistence.sourceCode.enabled -}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ tpl (include "licenseware-sdk-v2.sourceCodePvcName" $) $ }}
+  {{- with .Values.persistence.sourceCode.annotations -}}
+  annotations:
+    {{- tpl (toYaml .) $ | nindent 4 }}
+  {{- end }}
+spec:
+  {{- with .Values.persistence.sourceCode.accessModes }}
+  accessModes:
+    {{- tpl (toYaml .) $ | nindent 4 }}
+  {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.sourceCode.size }}
+  {{- with .Values.persistence.sourceCode.storageClassName }}
+  storageClassName: {{ . }}
+  {{- end }}
+{{- end }}

@@ -1,0 +1,44 @@
+apiVersion: v2
+name: licenseware-sdk-v2
+description: A reusable chart for Licenseware applications
+
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 0.1.0
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+# It is recommended to use it with quotes.
+appVersion: "0.0.0"
+
+icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/licenseware.png
+
+dependencies:
+  - condition: redis.create
+    name: redis
+    repository: https://charts.bitnami.com/bitnami/
+    version: 17.0.x
+  - condition: mongodb.create
+    name: mongodb
+    repository: https://charts.bitnami.com/bitnami/
+    version: 13.1.x
+  - condition: mongo-express.create
+    name: mongo-express
+    repository: https://cowboysysop.github.io/charts/
+    version: 2.6.x
+  - condition: jupyter.create
+    name: jupyter
+    repository: https://licenseware.github.io/charts/
+    version: 0.x.x
