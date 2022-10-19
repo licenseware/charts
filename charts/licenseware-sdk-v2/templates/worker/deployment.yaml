@@ -52,7 +52,7 @@ spec:
         {{- tpl (toYaml .) $ | nindent 8 }}
       {{- end }}
       containers:
-        - name: {{ default .Values.global.containerName .Values.workerApp.containerName | default .Chart.Name }}
+        - name: {{ tpl (default .Values.global.containerName .Values.workerApp.containerName) $ | default .Chart.Name }}
           {{- with .Values.workerApp.command }}
           command:
             {{- tpl (toYaml .) $ | nindent 12 }}
