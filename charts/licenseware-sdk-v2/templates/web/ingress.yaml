@@ -55,14 +55,14 @@ spec:
               service:
                 name: {{ $fullName }}
                 port:
-                  {{- if .Values.webApp.service.portName }}
-                  name: {{ .Values.webApp.service.portName }}
+                  {{- if $.Values.webApp.service.portName }}
+                  name: {{ $.Values.webApp.service.portName }}
                   {{- else }}
-                  number: {{ .Values.webApp.service.port }}
+                  number: {{ $.Values.webApp.service.port }}
                   {{- end }}
               {{- else }}
               serviceName: {{ $fullName }}
-              servicePort: {{ .Values.webApp.service.port }}
+              servicePort: {{ $.Values.webApp.service.port }}
               {{- end }}
           {{- end }}
     {{- end }}
