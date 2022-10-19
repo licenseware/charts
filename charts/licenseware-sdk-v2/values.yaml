@@ -84,6 +84,11 @@ jupyter:
 
 mongo-express:
   create: false
+  mongodbEnableAdmin: true
+  mongodbAuthDatabase: admin
+  mongodbAdminUsername: root
+  mongodbAdminPassword: ""
+  mongodbServer: ""
 
 mongodb:
   auth:

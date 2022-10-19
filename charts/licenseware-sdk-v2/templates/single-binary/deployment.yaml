@@ -62,7 +62,7 @@ spec:
           args:
             - sh
             - -c
-            - cp -a . /app && chown -R ${USER}:${USER} /app
+            - cp -r . /app
           {{- with (default .Values.global.resources .Values.singleBinaryApp.resources) }}
           resources:
             {{- tpl (toYaml .) $ | nindent 12 }}
