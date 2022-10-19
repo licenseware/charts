@@ -1,0 +1,41 @@
+{{- if not .Values.singleBinaryApp.enabled -}}
+{{- if .Values.workerApp.enabled -}}
+{{- if (default .Values.global.autoscaling.enabled .Values.workerApp.autoscaling.enabled) }}
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ include "licenseware-sdk-v2.workerAppResourceName" . }}
+  labels:
+    {{- include "licenseware-sdk-v2.labels" . | nindent 4 }}
+    {{- with .Values.workerApp.labels }}
+    {{- tpl (toYaml .) $ | nindent 4 }}
+    {{- end }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "licenseware-sdk-v2.workerAppResourceName" . }}
+  {{- with (default .Values.global.autoscaling.minReplicas .Values.workerApp.autoscaling.minReplicas) }}
+  minReplicas: {{ tpl (toYaml .) $ }}
+  {{- end }}
+  maxReplicas: {{ default .Values.global.autoscaling.maxReplicas .Values.workerApp.autoscaling.maxReplicas }}
+  metrics:
+    {{- with (default .Values.global.autoscaling.targetCPUUtilizationPercentage .Values.workerApp.autoscaling.targetCPUUtilizationPercentage) }}
+    - type: Resource
+      resource:
+        name: cpu
+        target: 
+          type: Utilization
+          averageUtilization: {{ tpl (toYaml .) $ }}
+    {{- end }}
+    {{- with (default .Values.global.autoscaling.targetMemoryUtilizationPercentage .Values.workerApp.autoscaling.targetMemoryUtilizationPercentage) }}
+    - type: Resource
+      resource:
+        name: memory
+        target: 
+          type: Utilization
+          averageUtilization: {{ tpl (toYaml .) $ }}
+    {{- end }}
+{{- end }}
+{{- end }}
+{{- end }}

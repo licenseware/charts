@@ -1,0 +1,120 @@
+{{- if not .Values.singleBinaryApp.enabled -}}
+{{- if .Values.workerApp.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "licenseware-sdk-v2.workerAppResourceName" . }}
+  labels:
+    {{- include "licenseware-sdk-v2.labels" . | nindent 4 }}
+    {{- with .Values.workerApp.labels }}
+    {{- tpl (toYaml .) $ | nindent 4 }}
+    {{- end }}
+spec:
+  {{- if not (default .Values.global.autoscaling.enabled .Values.workerApp.autoscaling.enabled) }}
+  {{- with (default .Values.global.replicaCount .Values.workerApp.replicaCount) }}
+  replicas:
+  {{- end }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "licenseware-sdk-v2.selectorLabels" . | nindent 6 }}
+      {{- with .Values.workerApp.labels }}
+      {{- tpl (toYaml .) $ | nindent 6 }}
+      {{- end }}
+  {{- with (default .Values.global.strategy .Values.workerApp.strategy) }}
+  strategy:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  template:
+    metadata:
+      {{- with (default .Values.global.podAnnotations .Values.workerApp.podAnnotations) }}
+      annotations:
+        {{- tpl (toYaml .) $ | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "licenseware-sdk-v2.selectorLabels" . | nindent 8 }}
+        {{- with .Values.workerApp.labels }}
+        {{- tpl (toYaml .) $ | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if (or .Values.serviceAccount.create .Values.serviceAccount.name) }}
+      serviceAccountName: {{ include "licenseware-sdk-v2.serviceAccountName" . }}
+      {{- end }}
+      {{- with (default .Values.global.terminationGracePeriodSeconds .Values.workerApp.terminationGracePeriodSeconds) }}
+      terminationGracePeriodSeconds: {{ tpl (toYaml .) $ | int }}
+      {{- end }}
+      {{- with (default .Values.global.podSecurityContext .Values.workerApp.podSecurityContext) }}
+      securityContext:
+        {{- tpl (toYaml .) $ | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ default .Values.global.containerName .Values.workerApp.containerName | default .Chart.Name }}
+          {{- with .Values.workerApp.command }}
+          command:
+            {{- tpl (toYaml .) $ | nindent 12 }}
+          {{- end }}
+          {{- with .Values.workerApp.args }}
+          args:
+            {{- tpl (toYaml .) $ | nindent 12 }}
+          {{- end }}
+          {{- with (default .Values.global.securityContext .Values.workerApp.securityContext) }}
+          securityContext:
+            {{- tpl (toYaml .) $ | nindent 12 }}
+          {{- end }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- with .Values.extraEnv }}
+          env:
+            {{- tpl (toYaml .) $ | nindent 12 }}
+          {{- end }}
+          envFrom:
+          - configMapRef:
+              name: {{ include "licenseware-sdk-v2.fullname" . }}
+          - secretRef:
+              name: {{ include "licenseware-sdk-v2.fullname" . }}
+          {{- with .Values.extraEnvFrom }}
+            {{- tpl (toYaml .) $ | nindent 12 }}
+          {{- end }}
+          {{- with (default .Values.global.resources .Values.workerApp.resources) }}
+          resources:
+            {{- tpl (toYaml .) $ | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+          - name: upload-data
+            mountPath: {{ .Values.configMapPairs.FILE_UPLOAD_PATH }}
+          - name: tmp
+            mountPath: /tmp
+          {{- with .Values.extraVolumeMounts }}
+          {{- tpl (toYaml .) $ | nindent 10 }}
+          {{- end }}
+      volumes:
+      - name: upload-data
+        {{- if .Values.persistence.uploadFiles.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ .Values.persistence.uploadFiles.claimName }}
+        {{- else }}
+        emptyDir: {}
+        {{- end }}
+      - name: tmp
+        emptyDir: {}
+        {{- with .Values.extraVolumes }}
+        {{- tpl (toYaml .) $ | nindent 8 }}
+        {{- end }}
+      {{- with (default .Values.global.nodeSelector .Values.workerApp.nodeSelector) }}
+      nodeSelector:
+        {{- tpl (toYaml .) $ | nindent 8 }}
+      {{- end }}
+      {{- with (default .Values.global.affinity .Values.workerApp.affinity) }}
+      affinity:
+        {{- tpl (toYaml .) $ | nindent 8 }}
+      {{- end }}
+      {{- with (default .Values.global.tolerations .Values.workerApp.tolerations) }}
+      tolerations:
+        {{- tpl (toYaml .) $ | nindent 8 }}
+      {{- end }}
+{{- end -}}
+{{- end -}}

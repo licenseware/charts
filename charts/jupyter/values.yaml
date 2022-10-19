@@ -13,6 +13,9 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+extraVolumeMounts: []
+extraVolumes: []
+
 serviceAccount:
   create: false
   annotations: {}
@@ -28,7 +31,7 @@ securityContext:
   # readOnlyRootFilesystem: true
   capabilities:
     drop:
-    - ALL
+      - ALL
   runAsUser: 1000
   runAsNonRoot: true
   runAsGroup: 1000
@@ -63,7 +66,8 @@ readinessProbe:
 ingress:
   enabled: false
   className: ""
-  annotations: {}
+  annotations:
+    {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
@@ -76,7 +80,8 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-resources: {}
+resources:
+  {}
   # limits:
   #   cpu: 100m
   #   memory: 128Mi
