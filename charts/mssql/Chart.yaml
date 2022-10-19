@@ -3,7 +3,7 @@ apiVersion: v2
 name: mssql
 version: 0.1.1
 
-appVersion: 2019-latest
+appVersion: 2019-CU16-GDR1-ubuntu-20.04
 
 description: Microsoft SQL Server 2019 Express
 type: application
