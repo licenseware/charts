@@ -54,14 +54,14 @@ spec:
               service:
                 name: {{ $fullName }}
                 port:
-                  {{- if .Values.singleBinaryApp.service.portName }}
-                  name: {{ .Values.singleBinaryApp.service.portName }}
+                  {{- if $.Values.singleBinaryApp.service.portName }}
+                  name: {{ $.Values.singleBinaryApp.service.portName }}
                   {{- else }}
-                  number: {{ .Values.singleBinaryApp.service.port }}
+                  number: {{ $.Values.singleBinaryApp.service.port }}
                   {{- end }}
               {{- else }}
               serviceName: {{ $fullName }}
-              servicePort: {{ .Values.singleBinaryApp.service.port }}
+              servicePort: {{ $.Values.singleBinaryApp.service.port }}
               {{- end }}
           {{- end }}
     {{- end }}
