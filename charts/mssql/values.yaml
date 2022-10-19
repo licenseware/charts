@@ -7,12 +7,15 @@ replicaCount: 1
 
 image:
   repository: mcr.microsoft.com/mssql/server
-  tag: 2019-latest
+  tag: 2019-CU16-GDR1-ubuntu-20.04
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
+extraVolumeMounts: []
+extraVolumes: []
 
 serviceAccount:
   create: false
