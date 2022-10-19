@@ -3,9 +3,9 @@ entries:
   jupyter:
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-19T10:51:50.969790081Z"
+    created: "2022-10-19T11:00:36.117991364Z"
     description: Jupyter Notebook
-    digest: bfa87cb46442127de8d2b84a2c258c8f5689838bc556e7d1a56591ef77a25dba
+    digest: f4905fd9fad7a32821bc3a29c0ffb96bcb52f5e84e4378cdeb61798aa554dbea
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
     name: jupyter
     type: application
@@ -14,7 +14,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-19T10:51:50.968958233Z"
+    created: "2022-10-19T11:00:36.117295856Z"
     description: Jupyter Notebook
     digest: f9ff5a86307dc4c376ffa96c8d20d56d7dd2297cc5bd673db8c5bf5023878d54
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
@@ -25,7 +25,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-19T10:51:50.968185788Z"
+    created: "2022-10-19T11:00:36.116609548Z"
     description: Jupyter Notebook
     digest: de2de641b2411e617f2ff577208abde9d9158b6621c8c5660fd31fcac4673eee
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
@@ -36,7 +36,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-19T10:51:50.967408142Z"
+    created: "2022-10-19T11:00:36.11515753Z"
     description: Jupyter Notebook
     digest: 8347b571b9cdc68ded4bee531db8c065326ee90462b3c7a5db943d6f9b9bdeea
     icon: https://github.com/licenseware/helm-charts/raw/main/static/png/jupyter.png
@@ -48,7 +48,7 @@ entries:
   licenseware-sdk-v2:
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-19T10:51:51.068392444Z"
+    created: "2022-10-19T11:00:36.203778695Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -67,7 +67,7 @@ entries:
       repository: https://licenseware.github.io/charts/
       version: 0.x.x
     description: A reusable chart for Licenseware applications
-    digest: c2dae0eb47936218ae820e9a6bf8f1d4406c2c77ec527c39497791effa47889d
+    digest: 75e0b3eaad84f93d88fc4b7699483d467b9858aaa6e099544b16084a966a284c
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/licenseware.png
     name: licenseware-sdk-v2
     type: application
@@ -76,7 +76,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-19T10:51:51.044958774Z"
+    created: "2022-10-19T11:00:36.182462339Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -104,7 +104,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-19T10:51:51.020036118Z"
+    created: "2022-10-19T11:00:36.162390798Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -132,7 +132,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-19T10:51:50.993844387Z"
+    created: "2022-10-19T11:00:36.139944928Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -161,9 +161,9 @@ entries:
   mssql:
   - apiVersion: v2
     appVersion: 2019-CU16-GDR1-ubuntu-20.04
-    created: "2022-10-19T10:51:51.070500167Z"
+    created: "2022-10-19T11:00:36.205100811Z"
     description: Microsoft SQL Server 2019 Express
-    digest: 07c77d61b4e6b5d24c613f213c948a327316d709c4484c5ad87eb1429f8cc541
+    digest: 4ee040346e39e00eacc5700ab1b8ba0b12705e3218a58fc3b35101b0672087fc
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/mssql.png
     name: mssql
     type: application
@@ -172,7 +172,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 2019-latest
-    created: "2022-10-19T10:51:51.069170189Z"
+    created: "2022-10-19T11:00:36.204439603Z"
     description: Microsoft SQL Server 2019 Express
     digest: db0a1317de17f31be806574ed1095b0e26597b68f32829e43bf48b6dd2e61c3f
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/mssql.png
@@ -181,4 +181,4 @@ entries:
     urls:
     - mssql-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-19T10:51:50.965534233Z"
+generated: "2022-10-19T11:00:36.113558311Z"
