@@ -47,7 +47,7 @@ livenessProbe:
   httpGet:
     path: /login
     port: "{{ .Values.service.portName }}"
-  initialDelaySeconds: 5
+  initialDelaySeconds: 30
   timeoutSeconds: 2
   periodSeconds: 10
   failureThreshold: 3
@@ -57,7 +57,7 @@ readinessProbe:
   httpGet:
     path: /login
     port: "{{ .Values.service.portName }}"
-  initialDelaySeconds: 5
+  initialDelaySeconds: 30
   timeoutSeconds: 2
   periodSeconds: 10
   failureThreshold: 3
