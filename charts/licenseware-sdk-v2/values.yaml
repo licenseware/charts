@@ -147,8 +147,14 @@ persistence:
     size: 512Mi
     storageClassName: ""
   uploadFiles:
+    accessModes:
+      - ReadWriteOnce
+    annotations: {}
     claimName: ""
+    create: false
     enabled: true
+    size: 1Gi
+    storageClassName: ""
 
 redis:
   auth:

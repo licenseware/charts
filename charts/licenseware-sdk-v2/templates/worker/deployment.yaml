@@ -93,7 +93,7 @@ spec:
           {{- end }}
       volumes:
       - name: upload-data
-        {{- if .Values.persistence.uploadFiles.enabled }}
+        {{- if (or .Values.persistence.uploadFiles.enabled .Values.persistence.uploadFiles.create) }}
         persistentVolumeClaim:
           claimName: {{ .Values.persistence.uploadFiles.claimName }}
         {{- else }}
