@@ -10,6 +10,6 @@ dependencies:
   version: 2.6.7
 - name: jupyter
   repository: https://licenseware.github.io/charts/
-  version: 0.2.1
-digest: sha256:01768f31ba587d53aad441e7f421b57f0763389b5b57e63f7af5949c343ba9e6
-generated: "2022-10-19T08:42:56.035855699Z"
+  version: 0.2.2
+digest: sha256:63f29e420dfd1628c7a6c26e4c0b9e7094167bf14485eae36e9b1934537cd587
+generated: "2022-10-20T17:53:36.284207855+07:00"
