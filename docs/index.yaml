@@ -3,9 +3,9 @@ entries:
   jupyter:
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-21T05:28:45.545561365Z"
+    created: "2022-10-26T06:56:31.933685923Z"
     description: Jupyter Notebook
-    digest: e7af6699b10a6426b29b0e22475aa123b0dd3a75f42ac45111670b8b8457079a
+    digest: caf49cd2b62b7866600108b7964c96b3f92e075f95a9af1018dc481223779219
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
     name: jupyter
     type: application
@@ -14,7 +14,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-21T05:28:45.544879763Z"
+    created: "2022-10-26T06:56:31.932772323Z"
     description: Jupyter Notebook
     digest: 2992d73fa05019d197d5aba80787492a1a8ed9742ab7d62402ec736d14b018bf
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
@@ -25,7 +25,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-21T05:28:45.54420396Z"
+    created: "2022-10-26T06:56:31.931920123Z"
     description: Jupyter Notebook
     digest: f9ff5a86307dc4c376ffa96c8d20d56d7dd2297cc5bd673db8c5bf5023878d54
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
@@ -36,7 +36,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-21T05:28:45.543565758Z"
+    created: "2022-10-26T06:56:31.931126323Z"
     description: Jupyter Notebook
     digest: de2de641b2411e617f2ff577208abde9d9158b6621c8c5660fd31fcac4673eee
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
@@ -47,7 +47,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-21T05:28:45.542891056Z"
+    created: "2022-10-26T06:56:31.930263223Z"
     description: Jupyter Notebook
     digest: 8347b571b9cdc68ded4bee531db8c065326ee90462b3c7a5db943d6f9b9bdeea
     icon: https://github.com/licenseware/helm-charts/raw/main/static/png/jupyter.png
@@ -56,10 +56,22 @@ entries:
     urls:
     - jupyter-0.1.0.tgz
     version: 0.1.0
+  ksqldb:
+  - apiVersion: v2
+    appVersion: 0.28.2
+    created: "2022-10-26T06:56:31.934329923Z"
+    description: Confluent KSQLDB Helm Chart
+    digest: 29227f474ea0f8b02066193484167ac3e083ce7a3ab3ff5d2539eb2edfa3c94c
+    icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/ksqldb.jpg
+    name: ksqldb
+    type: application
+    urls:
+    - ksqldb-0.1.0.tgz
+    version: 0.1.0
   licenseware-sdk-v2:
   - apiVersion: v2
     appVersion: latest
-    created: "2022-10-21T05:28:45.712622151Z"
+    created: "2022-10-26T06:56:32.147628705Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -78,7 +90,7 @@ entries:
       repository: https://licenseware.github.io/charts/
       version: 0.x.x
     description: A reusable chart for Licenseware applications
-    digest: 1f861ea0296d8aeacfe455c9f138a7913d2ba6c3ed79678a71a5e22f783947fc
+    digest: ebb93f4c7e1fad35e8e5841d93d974b95d79d0a817e528fb370d0ffc9fb2c396
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/licenseware.png
     name: licenseware-sdk-v2
     type: application
@@ -87,7 +99,7 @@ entries:
     version: 0.3.2
   - apiVersion: v2
     appVersion: latest
-    created: "2022-10-21T05:28:45.690760774Z"
+    created: "2022-10-26T06:56:32.120763207Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -115,7 +127,7 @@ entries:
     version: 0.3.0
   - apiVersion: v2
     appVersion: latest
-    created: "2022-10-21T05:28:45.671360006Z"
+    created: "2022-10-26T06:56:32.091670509Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -143,7 +155,7 @@ entries:
     version: 0.2.4
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-21T05:28:45.649203328Z"
+    created: "2022-10-26T06:56:32.063365812Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -171,7 +183,7 @@ entries:
     version: 0.2.3
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-21T05:28:45.628701857Z"
+    created: "2022-10-26T06:56:32.039917214Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -199,7 +211,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-21T05:28:45.609516889Z"
+    created: "2022-10-26T06:56:32.012680116Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -227,7 +239,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-21T05:28:45.587660613Z"
+    created: "2022-10-26T06:56:31.987525218Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -255,7 +267,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-21T05:28:45.565855436Z"
+    created: "2022-10-26T06:56:31.96112232Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -284,9 +296,9 @@ entries:
   mssql:
   - apiVersion: v2
     appVersion: 2019-CU16-GDR1-ubuntu-20.04
-    created: "2022-10-21T05:28:45.713916555Z"
+    created: "2022-10-26T06:56:32.149294305Z"
     description: Microsoft SQL Server 2019 Express
-    digest: cd31e70d018c498b4121485d32afce3d3fddaf2238da0c406a4ec66b0a0d6f2a
+    digest: 9379b005b397aecddea5a6079c6aa3547e58dcb50aa9747009d38225d98fcfc1
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/mssql.png
     name: mssql
     type: application
@@ -295,7 +307,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 2019-latest
-    created: "2022-10-21T05:28:45.713269253Z"
+    created: "2022-10-26T06:56:32.148479805Z"
     description: Microsoft SQL Server 2019 Express
     digest: db0a1317de17f31be806574ed1095b0e26597b68f32829e43bf48b6dd2e61c3f
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/mssql.png
@@ -304,4 +316,4 @@ entries:
     urls:
     - mssql-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-21T05:28:45.541668751Z"
+generated: "2022-10-26T06:56:31.929270123Z"
