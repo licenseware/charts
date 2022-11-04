@@ -3,9 +3,9 @@ entries:
   jupyter:
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-26T06:56:31.933685923Z"
+    created: "2022-11-04T06:29:37.296870461Z"
     description: Jupyter Notebook
-    digest: caf49cd2b62b7866600108b7964c96b3f92e075f95a9af1018dc481223779219
+    digest: 3f68f1211b96bf42405f0c64e8b3a0250ca29648bf2e6ed8a89d21c577752242
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
     name: jupyter
     type: application
@@ -14,7 +14,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-26T06:56:31.932772323Z"
+    created: "2022-11-04T06:29:37.296187959Z"
     description: Jupyter Notebook
     digest: 2992d73fa05019d197d5aba80787492a1a8ed9742ab7d62402ec736d14b018bf
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
@@ -25,7 +25,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-26T06:56:31.931920123Z"
+    created: "2022-11-04T06:29:37.295506058Z"
     description: Jupyter Notebook
     digest: f9ff5a86307dc4c376ffa96c8d20d56d7dd2297cc5bd673db8c5bf5023878d54
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
@@ -36,7 +36,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-26T06:56:31.931126323Z"
+    created: "2022-11-04T06:29:37.294812756Z"
     description: Jupyter Notebook
     digest: de2de641b2411e617f2ff577208abde9d9158b6621c8c5660fd31fcac4673eee
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
@@ -47,7 +47,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 6.4.12
-    created: "2022-10-26T06:56:31.930263223Z"
+    created: "2022-11-04T06:29:37.294145455Z"
     description: Jupyter Notebook
     digest: 8347b571b9cdc68ded4bee531db8c065326ee90462b3c7a5db943d6f9b9bdeea
     icon: https://github.com/licenseware/helm-charts/raw/main/static/png/jupyter.png
@@ -56,10 +56,34 @@ entries:
     urls:
     - jupyter-0.1.0.tgz
     version: 0.1.0
+  kafka-connect-base:
+  - apiVersion: v2
+    appVersion: 7.2.2
+    created: "2022-11-04T06:29:37.297515262Z"
+    description: Confluent Kafka connect base Helm Chart with the ability to add plugins
+      as required
+    digest: ee04d6a89b9f7ad5b7bcaa2d17f00a39b0271a20feb0e9190bb1534413d03e85
+    icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/kafka.jpg
+    name: kafka-connect-base
+    type: application
+    urls:
+    - kafka-connect-base-0.1.0.tgz
+    version: 0.1.0
   ksqldb:
   - apiVersion: v2
     appVersion: 0.28.2
-    created: "2022-10-26T06:56:31.934329923Z"
+    created: "2022-11-04T06:29:37.298942465Z"
+    description: Confluent ksqlDB Helm Chart
+    digest: 9bb6437f150dbbb24e892d7e782391f012fac64c9ea423f6b015db54402a2e19
+    icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/ksqldb.jpg
+    name: ksqldb
+    type: application
+    urls:
+    - ksqldb-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 0.28.2
+    created: "2022-11-04T06:29:37.298010163Z"
     description: Confluent KSQLDB Helm Chart
     digest: 29227f474ea0f8b02066193484167ac3e083ce7a3ab3ff5d2539eb2edfa3c94c
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/ksqldb.jpg
@@ -71,7 +95,39 @@ entries:
   licenseware-sdk-v2:
   - apiVersion: v2
     appVersion: latest
-    created: "2022-10-26T06:56:32.147628705Z"
+    created: "2022-11-04T06:29:37.505956911Z"
+    dependencies:
+    - condition: redis.create
+      name: redis
+      repository: https://charts.bitnami.com/bitnami/
+      version: 17.0.x
+    - condition: mongodb.create
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami/
+      version: 13.1.x
+    - condition: mongodb-sharded.create
+      name: mongodb-sharded
+      repository: https://charts.bitnami.com/bitnami/
+      version: 6.1.x
+    - condition: mongo-express.create
+      name: mongo-express
+      repository: https://cowboysysop.github.io/charts/
+      version: 2.6.x
+    - condition: jupyter.create
+      name: jupyter
+      repository: https://licenseware.github.io/charts/
+      version: 0.x.x
+    description: A reusable chart for Licenseware applications
+    digest: d96412a5ae159b5dcf182e73cced7f9748e5858e2ccc2532ff7f753f31b01fb4
+    icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/licenseware.png
+    name: licenseware-sdk-v2
+    type: application
+    urls:
+    - licenseware-sdk-v2-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: latest
+    created: "2022-11-04T06:29:37.47747105Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -99,7 +155,7 @@ entries:
     version: 0.3.2
   - apiVersion: v2
     appVersion: latest
-    created: "2022-10-26T06:56:32.120763207Z"
+    created: "2022-11-04T06:29:37.456087604Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -127,7 +183,7 @@ entries:
     version: 0.3.0
   - apiVersion: v2
     appVersion: latest
-    created: "2022-10-26T06:56:32.091670509Z"
+    created: "2022-11-04T06:29:37.433853156Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -155,7 +211,7 @@ entries:
     version: 0.2.4
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-26T06:56:32.063365812Z"
+    created: "2022-11-04T06:29:37.411360907Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -183,7 +239,7 @@ entries:
     version: 0.2.3
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-26T06:56:32.039917214Z"
+    created: "2022-11-04T06:29:37.38937826Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -211,7 +267,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-26T06:56:32.012680116Z"
+    created: "2022-11-04T06:29:37.36603761Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -239,7 +295,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-26T06:56:31.987525218Z"
+    created: "2022-11-04T06:29:37.344749464Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -267,7 +323,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 0.0.0
-    created: "2022-10-26T06:56:31.96112232Z"
+    created: "2022-11-04T06:29:37.322363816Z"
     dependencies:
     - condition: redis.create
       name: redis
@@ -296,9 +352,9 @@ entries:
   mssql:
   - apiVersion: v2
     appVersion: 2019-CU16-GDR1-ubuntu-20.04
-    created: "2022-10-26T06:56:32.149294305Z"
+    created: "2022-11-04T06:29:37.507384014Z"
     description: Microsoft SQL Server 2019 Express
-    digest: 9379b005b397aecddea5a6079c6aa3547e58dcb50aa9747009d38225d98fcfc1
+    digest: 836cf3df18ba9c3c955e3094103f84b3c0cd4eba3fc0d77d751012d6cad96a22
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/mssql.png
     name: mssql
     type: application
@@ -307,7 +363,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 2019-latest
-    created: "2022-10-26T06:56:32.148479805Z"
+    created: "2022-11-04T06:29:37.506691913Z"
     description: Microsoft SQL Server 2019 Express
     digest: db0a1317de17f31be806574ed1095b0e26597b68f32829e43bf48b6dd2e61c3f
     icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/mssql.png
@@ -316,4 +372,4 @@ entries:
     urls:
     - mssql-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-26T06:56:31.929270123Z"
+generated: "2022-11-04T06:29:37.293234053Z"
