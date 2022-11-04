@@ -133,6 +133,21 @@ mongodb:
       mongodb: 30100
     type: ClusterIP
 
+mongodb-sharded:
+  auth:
+    rootPassword: ""
+    replicaSetKey: ""
+  configsvr:
+    persistence:
+      enabled: false
+  create: false
+  shards: 1
+  shardsvr:
+    persistence:
+      enabled: false
+    dataNode:
+      replicaCount: 1
+
 nameOverride: "{{ .Release.Name }}"
 
 persistence:

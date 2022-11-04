@@ -113,3 +113,5 @@ configMapPairs:
   KSQL_BOOTSTRAP_SERVERS:
   # KSQL_KSQL_SERVICE_ID: ksql_standalone_1
   # KSQL_KSQL_QUERIES_FILE: /path/in/container/queries.sql
+
+initContainers: []
