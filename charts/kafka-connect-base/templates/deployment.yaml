@@ -1,16 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "ksqldb.fullname" . }}
+  name: {{ include "kafka-connect-base.fullname" . }}
   labels:
-    {{- include "ksqldb.labels" . | nindent 4 }}
+    {{- include "kafka-connect-base.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
+  {{- with .Values.strategy }}
+  strategy:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
   selector:
     matchLabels:
-      {{- include "ksqldb.selectorLabels" . | nindent 6 }}
+      {{- include "kafka-connect-base.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,14 +22,14 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "ksqldb.selectorLabels" . | nindent 8 }}
+        {{- include "kafka-connect-base.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       {{- if (or .Values.serviceAccount.create .Values.serviceAccount.name) }}
-      serviceAccountName: {{ include "ksqldb.serviceAccountName" . }}
+      serviceAccountName: {{ include "kafka-connect-base.serviceAccountName" . }}
       {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
@@ -40,8 +44,8 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: ksqldb
-              containerPort: 8088
+            - name: connect
+              containerPort: 8083
               protocol: TCP
           {{- with .Values.readinessProbe }}
           livenessProbe:
@@ -53,7 +57,7 @@ spec:
           {{- end }}
           envFrom:
             - configMapRef:
-                name: {{ include "ksqldb.fullname" . }}
+                name: {{ include "kafka-connect-base.fullname" . }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.extraVolumeMounts }}
