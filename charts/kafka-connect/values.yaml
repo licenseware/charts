@@ -1,11 +1,11 @@
-# Default values for kafka-connect-base.
+# Default values for kafka-connect.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: confluentinc/cp-kafka-connect-base
+  repository: confluentinc/cp-kafka-connect
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -122,7 +122,7 @@ tolerations: []
 affinity: {}
 
 configMapPairs:
-  CONNECT_BOOTSTRAP_SERVERS: kafka:9092
+  CONNECT_BOOTSTRAP_SERVERS: "{{ .Release.Name }}-kafka:9092"
   CONNECT_REST_PORT: "28082"
   CONNECT_GROUP_ID: kafka-connect
   CONNECT_CONFIG_STORAGE_TOPIC: kafka-connect-config
@@ -148,7 +148,7 @@ configMapPairs:
 initContainers:
   []
   # - name: init-plugin
-  #   image: confluentinc/cp-kafka-connect-base:7.2.2
+  #   image: confluentinc/cp-kafka-connect:7.2.2
   #   command:
   #     - sh
   #     - -c
@@ -156,3 +156,28 @@ initContainers:
   #   volumeMounts:
   #     - name: plugin
   #       mountPath: /usr/share/confluent-hub-components
+
+kafka:
+  create: true
+  defaultReplicationFactor: 1
+  deleteTopicEnable: true
+  heapOpts: "-Xmx1024m -Xms1024m"
+  numPartitions: 1
+  persistence:
+    enabled: false
+  provisioning:
+    enabled: true
+    topics:
+      - name: kafka-connect-offset
+        config:
+          cleanup.policy: compact
+      - name: kafka-connect-config
+        config:
+          cleanup.policy: compact
+      - name: kafka-connect-status
+        config:
+          cleanup.policy: compact
+  replicaCount: 1
+  zookeeper:
+    persistence:
+      enabled: false
