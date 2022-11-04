@@ -110,8 +110,36 @@ tolerations: []
 affinity: {}
 
 configMapPairs:
-  KSQL_BOOTSTRAP_SERVERS:
+  KSQL_BOOTSTRAP_SERVERS: "{{ .Release.Name }}-kafka:9092"
   # KSQL_KSQL_SERVICE_ID: ksql_standalone_1
   # KSQL_KSQL_QUERIES_FILE: /path/in/container/queries.sql
 
 initContainers: []
+
+kafka:
+  create: true
+  fullnameOverride: ksqldb-kafka
+  nameOverride: ksqldb-kafka
+  defaultReplicationFactor: 1
+  deleteTopicEnable: true
+  heapOpts: "-Xmx1024m -Xms1024m"
+  numPartitions: 1
+  persistence:
+    enabled: false
+  provisioning:
+    enabled: false
+    topics:
+      []
+      # - name: kafka-connect-offset
+      #   config:
+      #     cleanup.policy: compact
+      # - name: kafka-connect-config
+      #   config:
+      #     cleanup.policy: compact
+      # - name: kafka-connect-status
+      #   config:
+      #     cleanup.policy: compact
+  replicaCount: 1
+  zookeeper:
+    persistence:
+      enabled: false
