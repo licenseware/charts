@@ -50,8 +50,11 @@ spec:
       securityContext:
         {{- tpl (toYaml .) $ | nindent 8 }}
       {{- end }}
-      {{- if .Values.persistence.sourceCode.enabled }}
       initContainers:
+      {{- with .Values.singleBinaryApp.initContainers }}
+      {{- tpl (toYaml .) $ | nindent 8 }}
+      {{- end }}
+      {{- if .Values.persistence.sourceCode.enabled }}
         - name: init-src
           {{- with (default .Values.global.securityContext .Values.singleBinaryApp.securityContext) }}
           securityContext:

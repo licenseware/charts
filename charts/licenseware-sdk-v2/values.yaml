@@ -217,20 +217,23 @@ singleBinaryApp:
           - path: /
             pathType: ImplementationSpecific
     tls:
-      - hosts:
-          - chart-example.local
-        secretName: chart-example-tls
+      []
+      # - hosts:
+      #     - chart-example.local
+      #   secretName: chart-example-tls
   labels:
     licenseware.io/type: single-binary
   livenessProbe:
     failureThreshold: 3
     httpGet:
       path: "{{ .Values.configMapPairs.APP_PATH }}/swagger.json"
-      port: "{{ .Values.webApp.service.portName }}"
+      port: "{{ .Values.singleBinaryApp.service.portName }}"
     initialDelaySeconds: 5
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 5
+  metrics:
+    enabled: false
   nameOverride: ""
   nodeSelector: {}
   podAnnotations: {}
@@ -239,7 +242,7 @@ singleBinaryApp:
     failureThreshold: 3
     httpGet:
       path: "{{ .Values.configMapPairs.APP_PATH }}/swagger.json"
-      port: "{{ .Values.webApp.service.portName }}"
+      port: "{{ .Values.singleBinaryApp.service.portName }}"
     initialDelaySeconds: 5
     periodSeconds: 10
     successThreshold: 1
@@ -339,6 +342,7 @@ workerApp:
   command: []
   containerName: ""
   enabled: true
+  initContainers: []
   labels:
     licenseware.io/type: worker
   livenessProbe: {}
@@ -353,3 +357,55 @@ workerApp:
   strategy: {}
   terminationGracePeriodSeconds: ""
   tolerations: []
+
+postgresql:
+  auth:
+    database: admin
+    password:
+    username: auth_service
+  create: false
+  primary:
+    initdb:
+      scripts:
+        init_example.sh: |
+          echo it works
+
+pgadmin:
+  create: false
+  env:
+    email:
+    password:
+  extraSecretMounts:
+    []
+    # - name: pgpassfile
+    #   secret: pgpassfile
+    #   subPath: pgpassfile
+    #   mountPath: /var/lib/pgadmin/storage/pgadmin/file.pgpass
+    #   readOnly: true
+  image:
+    tag: 6.15
+  ingress:
+    enabled: false
+    hosts:
+      - host: chart-example.local
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls: []
+  livenessProbe:
+    initialDelaySeconds: 40
+  readinessProbe:
+    initialDelaySeconds: 40
+  serverDefinitions:
+    enabled: false
+    servers:
+      licenseware:
+        Group: Servers
+        Host: postgresql
+        MaintenanceDB: postgres
+        Name: Licenseware
+        Port: 5432
+        Username: licenseware
+        # PassFile: /var/lib/pgadmin/storage/pgadmin/file.pgpass
+  service:
+    type: ClusterIP
