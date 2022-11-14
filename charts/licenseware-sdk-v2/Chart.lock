@@ -14,5 +14,11 @@ dependencies:
 - name: jupyter
   repository: https://licenseware.github.io/charts/
   version: 0.2.2
-digest: sha256:dd66529c7229656223d66ab7b4945e4038893d7ba8f402affbb03997b196000f
-generated: "2022-11-03T17:39:38.672935175+07:00"
+- name: postgresql
+  repository: https://charts.bitnami.com/bitnami/
+  version: 12.1.1
+- name: pgadmin4
+  repository: https://helm.runix.net/
+  version: 1.13.6
+digest: sha256:23f977e82ef573c55bf8dc30155ad466d00b0e0983c12d847ff85de935cc71fd
+generated: "2022-11-11T12:29:49.384306328+07:00"
