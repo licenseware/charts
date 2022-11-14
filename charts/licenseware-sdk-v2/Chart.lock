@@ -7,7 +7,7 @@ dependencies:
   version: 13.1.7
 - name: mongodb-sharded
   repository: https://charts.bitnami.com/bitnami/
-  version: 6.1.10
+  version: 6.1.11
 - name: mongo-express
   repository: https://cowboysysop.github.io/charts/
   version: 2.6.7
@@ -16,9 +16,9 @@ dependencies:
   version: 0.2.2
 - name: postgresql
   repository: https://charts.bitnami.com/bitnami/
-  version: 12.1.1
+  version: 12.1.2
 - name: pgadmin4
   repository: https://helm.runix.net/
   version: 1.13.6
-digest: sha256:23f977e82ef573c55bf8dc30155ad466d00b0e0983c12d847ff85de935cc71fd
-generated: "2022-11-11T12:29:49.384306328+07:00"
+digest: sha256:b9a02c9816146f097893424a4d1b2e4c1458c1415425ed8db7cb7b1dbd83866d
+generated: "2022-11-14T04:55:50.035658571Z"
