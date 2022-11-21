@@ -68,6 +68,12 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- with .Values.extraEnv }}
+          ports:
+            {{- if .Values.serviceMonitorDramatiq.enabled }}
+            - name: {{ tpl (toYaml .Values.serviceMonitorDramatiq.portName) $ }}
+              containerPort: {{ tpl (toYaml .Values.serviceMonitorDramatiq.portNumber) $ | int }}
+              protocol: TCP
+            {{- end }}
           env:
             {{- tpl (toYaml .) $ | nindent 12 }}
           {{- end }}
