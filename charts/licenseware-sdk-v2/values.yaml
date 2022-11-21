@@ -423,6 +423,13 @@ workerApp:
   replicaCount: 1
   resources: {}
   securityContext: {}
+  service:
+    enabled: true
+    containerPort: "{{ .Values.serviceMonitorDramatiq.portName }}"
+    port: 80
+    portName: "{{ .Values.serviceMonitorDramatiq.portName }}"
+    protocol: TCP
+    type: ClusterIP
   strategy: {}
   terminationGracePeriodSeconds: ""
   tolerations: []

@@ -1,0 +1,25 @@
+{{- if not .Values.singleBinaryApp.enabled -}}
+{{- if .Values.workerApp.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "licenseware-sdk-v2.workerAppResourceName" . }}
+  labels:
+    {{- include "licenseware-sdk-v2.labels" . | nindent 4 }}
+    {{- with .Values.workerApp.labels }}
+    {{- tpl (toYaml .) $ | nindent 4 }}
+    {{- end }}
+spec:
+  type: {{ .Values.workerApp.service.type }}
+  ports:
+    - port: {{ .Values.workerApp.service.port }}
+      targetPort: {{ tpl .Values.workerApp.service.portName $ }}
+      protocol: {{ .Values.workerApp.service.protocol }}
+      name: {{ tpl .Values.workerApp.service.portName $ }}
+  selector:
+    {{- include "licenseware-sdk-v2.selectorLabels" . | nindent 4 }}
+    {{- with .Values.workerApp.labels }}
+    {{- tpl (toYaml .) $ | nindent 4 }}
+    {{- end }}
+{{- end }}
+{{- end }}
