@@ -15,6 +15,12 @@ spec:
       targetPort: {{ .Values.singleBinaryApp.service.portName }}
       protocol: {{ .Values.singleBinaryApp.service.protocol }}
       name: {{ .Values.singleBinaryApp.service.portName }}
+    {{- if .Values.serviceMonitorDramatiq.enabled }}
+    - port: {{ .Values.serviceMonitorDramatiq.portNumber }}
+      targetPort: {{ .Values.serviceMonitorDramatiq.portName }}
+      protocol: TCP
+      name: {{ .Values.serviceMonitorDramatiq.portName }}
+    {{- end }}
   selector:
     {{- include "licenseware-sdk-v2.selectorLabels" . | nindent 4 }}
     {{- with .Values.singleBinaryApp.labels }}
