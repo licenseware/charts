@@ -19,6 +19,7 @@ configMapPairs:
   MONGO_DATABASE_NAME: "{{ .Values.configMapPairs.APP_SHORT_NAME }}"
   PORT: "5000"
   QUEUE_NAME: "{{ .Values.configMapPairs.APP_SHORT_NAME }}"
+  PROMETHEUS_ENABLED: "false"
   REDIS_DB: "0"
   REDIS_HOST: "{{ if .Values.redis.create }}{{ .Release.Name }}-redis-master{{ end }}"
   REDIS_PORT: "6379"
@@ -354,10 +355,10 @@ webApp:
         paths:
           - path: /
             pathType: ImplementationSpecific
-    tls:
-      - hosts:
-          - chart-example.local
-        secretName: chart-example-tls
+    tls: []
+    # - hosts:
+    #     - chart-example.local
+    #   secretName: chart-example-tls
   labels:
     licenseware.io/type: web
   livenessProbe:
