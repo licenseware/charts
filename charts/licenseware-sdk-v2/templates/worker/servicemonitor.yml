@@ -1,11 +1,15 @@
+{{- $fullName := include "licenseware-sdk-v2.workerAppResourceName" . -}}
 {{- if not .Values.singleBinaryApp.enabled -}}
 {{- if (and .Values.serviceMonitor.enabled .Values.serviceMonitorDramatiq.enabled) -}}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{ include "licenseware-sdk-v2.workerAppResourceName" . }}
+  name: {{ $fullName }}
   labels:
     {{- include "licenseware-sdk-v2.labels" . | nindent 4 }}
+    {{- with .Values.workerApp.labels }}
+    {{- tpl (toYaml .) $ | nindent 4 }}
+    {{- end }}
     {{- range $key, $value := .Values.serviceMonitor.additionalLabels }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
