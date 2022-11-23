@@ -258,9 +258,18 @@ serviceMonitor:
   tlsConfig: {}
 
 serviceMonitorDramatiq:
+  # serviceMonitor.enabled must be true
   enabled: true
   portName: drmtq-metrics
   portNumber: 9191
+
+alertingRule:
+  # serviceMonitor.enabled must be true
+  enabled: true
+  downFor: 5m
+  labels:
+    severity: critical
+  additionalRules: []
 
 singleBinaryApp:
   affinity: {}
