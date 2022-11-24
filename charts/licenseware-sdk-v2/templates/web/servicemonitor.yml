@@ -1,5 +1,6 @@
 {{- $fullName := include "licenseware-sdk-v2.webAppResourceName" . -}}
 {{- if not .Values.singleBinaryApp.enabled -}}
+{{- if .Values.webApp.enabled -}}
 {{- if .Values.serviceMonitor.enabled -}}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -41,5 +42,6 @@ spec:
     {{- range .Values.serviceMonitor.targetLabels }}
     - {{ . }}
     {{- end }}
+{{- end }}
 {{- end }}
 {{- end }}

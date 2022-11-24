@@ -1,5 +1,6 @@
 {{- $fullName := include "licenseware-sdk-v2.workerAppResourceName" . -}}
 {{- if not .Values.singleBinaryApp.enabled -}}
+{{- if .Values.workerApp.enabled -}}
 {{- if (and .Values.serviceMonitor.enabled .Values.alertingRule.enabled) -}}
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
@@ -31,5 +32,6 @@ spec:
       {{- range $key, $value := .Values.alertingRule.additionalRules }}
       {{- tpl (toYaml .) $ | nindent 6 }}
       {{- end }}
+{{- end }}
 {{- end }}
 {{- end }}
