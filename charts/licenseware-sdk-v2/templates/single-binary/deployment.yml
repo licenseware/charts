@@ -11,7 +11,7 @@ metadata:
 spec:
   {{- if not (default .Values.global.autoscaling.enabled .Values.singleBinaryApp.autoscaling.enabled) }}
   {{- with (default .Values.global.replicaCount .Values.singleBinaryApp.replicaCount) }}
-  replicas:
+  replicas: {{ . }}
   {{- end }}
   {{- end }}
   selector:

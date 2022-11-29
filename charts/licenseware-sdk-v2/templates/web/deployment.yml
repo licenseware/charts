@@ -12,7 +12,7 @@ metadata:
 spec:
   {{- if not (default .Values.global.autoscaling.enabled .Values.webApp.autoscaling.enabled) }}
   {{- with (default .Values.global.replicaCount .Values.webApp.replicaCount) }}
-  replicas:
+  replicas: {{ . }}
   {{- end }}
   {{- end }}
   selector:
