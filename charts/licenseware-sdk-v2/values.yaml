@@ -443,3 +443,21 @@ workerApp:
   strategy: {}
   terminationGracePeriodSeconds: ""
   tolerations: []
+
+job:
+  affinity: {}
+  args:
+  command: []
+  containerName: ""
+  enabled: false
+  restartPolicy: OnFailure
+  labels:
+    licenseware.io/type: job
+  nameOverride: ""
+  nodeSelector: {}
+  podAnnotations: {}
+  podSecurityContext: {}
+  resources: {}
+  securityContext: {}
+  terminationGracePeriodSeconds: ""
+  tolerations: []
