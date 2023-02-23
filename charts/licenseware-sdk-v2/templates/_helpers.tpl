@@ -79,3 +79,45 @@ Create the name of the service account to use
 {{- define "licenseware-sdk-v2.sourceCodePvcName" -}}
 {{- default (printf "%s-%s" (include "licenseware-sdk-v2.fullname" .) "source-code") .Values.persistence.sourceCode.nameOverride }}
 {{- end }}
+
+{{- define "licenseware-sdk-v2.webAppSelectorLabels" -}}
+{{- include "licenseware-sdk-v2.selectorLabels" . }}
+{{- with $.Values.webApp.labels }}
+{{- . | toYaml | nindent 0 }}
+{{- end }}
+{{- end }}
+
+{{- define "licenseware-sdk-v2.webAppLabels" -}}
+{{- include "licenseware-sdk-v2.labels" . }}
+{{- with $.Values.webApp.labels }}
+{{- . | toYaml | nindent 0 }}
+{{- end }}
+{{- end }}
+
+{{- define "licenseware-sdk-v2.workerAppSelectorLabels" -}}
+{{- include "licenseware-sdk-v2.selectorLabels" . }}
+{{- with .Values.workerApp.labels }}
+{{- . | toYaml | nindent 0 }}
+{{- end }}
+{{- end }}
+
+{{- define "licenseware-sdk-v2.workerAppLabels" -}}
+{{- include "licenseware-sdk-v2.labels" . }}
+{{- with .Values.workerApp.labels }}
+{{- . | toYaml | nindent 0 }}
+{{- end }}
+{{- end }}
+
+{{- define "licenseware-sdk-v2.singleBinaryAppSelectorLabels" -}}
+{{- include "licenseware-sdk-v2.selectorLabels" . }}
+{{- with .Values.singleBinaryApp.labels }}
+{{- . | toYaml | nindent 0 }}
+{{- end }}
+{{- end }}
+
+{{- define "licenseware-sdk-v2.singleBinaryAppLabels" -}}
+{{- include "licenseware-sdk-v2.labels" . }}
+{{- with .Values.singleBinaryApp.labels }}
+{{- . | toYaml | nindent 0 }}
+{{- end }}
+{{- end }}
