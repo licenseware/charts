@@ -2,9 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "licenseware-sdk-v2.fullname" . }}
-  annotations:
-    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded,hook-failed
+  name: {{ include "licenseware-sdk-v2.fullname" . }}-{{ randAlphaNum 5 | lower }}
   labels:
     {{- include "licenseware-sdk-v2.labels" . | nindent 4 }}
 spec:
@@ -21,10 +19,9 @@ spec:
         {{- tpl (toYaml .) $ | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "licenseware-sdk-v2.selectorLabels" . | nindent 8 }}
-        {{- with .Values.job.labels }}
-        {{- tpl (toYaml .) $ | nindent 8 }}
-        {{- end }}
+        app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+        app.kubernetes.io/instance: {{ .Release.Name | quote }}
+        helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     spec:
       restartPolicy: {{ .Values.job.restartPolicy | default "OnFailure" }}
       {{- with .Values.imagePullSecrets }}
@@ -85,6 +82,12 @@ spec:
           {{- with .Values.extraVolumeMounts }}
           {{- tpl (toYaml .) $ | nindent 10 }}
           {{- end }}
+          {{- with .Values.job.extraVolumeMounts }}
+          {{- tpl (toYaml .) $ | nindent 10 }}
+          {{- end }}
+        {{- with .Values.job.extraContainers }}
+        {{- tpl (toYaml .) $ | nindent 8 }}
+        {{- end }}
       volumes:
       - name: upload-data
         {{- if (or .Values.persistence.uploadFiles.enabled .Values.persistence.uploadFiles.create) }}
@@ -101,6 +104,9 @@ spec:
           claimName: {{ tpl (include "licenseware-sdk-v2.sourceCodePvcName" $) $ }}
       {{- end }}
       {{- with .Values.extraVolumes }}
+      {{- tpl (toYaml .) $ | nindent 6 }}
+      {{- end }}
+      {{- with .Values.job.extraVolumes }}
       {{- tpl (toYaml .) $ | nindent 6 }}
       {{- end }}
       {{- with (default .Values.global.nodeSelector .Values.job.nodeSelector) }}

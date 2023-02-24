@@ -450,6 +450,9 @@ job:
   command: []
   containerName: ""
   enabled: false
+  extraContainers: []
+  extraVolumeMounts: []
+  extraVolumes: []
   restartPolicy: OnFailure
   labels:
     licenseware.io/type: job
