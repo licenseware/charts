@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "licenseware-sdk-v2.fullname" . }}-{{ randAlphaNum 5 | lower }}
+  name: {{ include "licenseware-sdk-v2.fullname" . }}-job-{{ randAlphaNum 5 | lower }}
   labels:
     {{- include "licenseware-sdk-v2.labels" . | nindent 4 }}
 spec:
