@@ -6,11 +6,17 @@ metadata:
   labels:
     {{- include "licenseware-sdk-v2.labels" . | nindent 4 }}
 spec:
-  activeDeadlineSeconds: {{ .Values.job.activeDeadlineSeconds | default 3600 }}
+  {{- with .Values.job.activeDeadlineSeconds }}
+  activeDeadlineSeconds: {{ . }}
+  {{- end }}
   backoffLimit: {{ .Values.job.backoffLimit | default 6 }}
   completionMode: {{ .Values.job.completionMode | default "NonIndexed" }}
-  completions: {{ .Values.job.completions | default 1 }}
-  parallelism: {{ .Values.job.parallelism | default 1 }}
+  {{- with .Values.job.completions }}
+  completions: {{ . }}
+  {{- end }}
+  {{- with .Values.job.parallelism }}
+  parallelism: {{ . }}
+  {{- end }}
   suspend: {{ .Values.job.suspend | default false }}
   template:
     metadata:

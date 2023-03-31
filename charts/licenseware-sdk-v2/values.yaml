@@ -445,9 +445,11 @@ workerApp:
   tolerations: []
 
 job:
+  activeDeadlineSeconds: null
   affinity: {}
   args:
   command: []
+  completion: null
   containerName: ""
   enabled: false
   extraContainers: []
@@ -458,6 +460,7 @@ job:
     licenseware.io/type: job
   nameOverride: ""
   nodeSelector: {}
+  parallelism: 1
   podAnnotations: {}
   podSecurityContext: {}
   resources: {}
