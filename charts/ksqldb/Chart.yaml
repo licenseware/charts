@@ -1,13 +1,13 @@
 apiVersion: v2
 
 name: ksqldb
-version: 0.3.0
+version: 0.3.1
 
 appVersion: 0.28.2
 
 description: Confluent ksqlDB Helm Chart
 type: application
-icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/ksqldb.jpg
+icon: https://github.com/licenseware/helm-charts/raw/main/static/png/ksqldb.jpg
 
 keywords:
   - ksqldb
