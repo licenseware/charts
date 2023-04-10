@@ -50,6 +50,9 @@ spec:
       securityContext:
         {{- tpl (toYaml .) $ | nindent 8 }}
       {{- end }}
+      {{- with .Values.singleBinaryApp.shareProcessNamespace }}
+      shareProcessNamespace: {{ . }}
+      {{- end }}
       initContainers:
       {{- with .Values.singleBinaryApp.initContainers }}
       {{- tpl (toYaml .) $ | nindent 8 }}
@@ -135,6 +138,9 @@ spec:
           {{- with .Values.extraVolumeMounts }}
           {{- tpl (toYaml .) $ | nindent 10 }}
           {{- end }}
+        {{- with .Values.singleBinaryApp.sidecars }}
+        {{- tpl (toYaml .) $ | nindent 8 }}
+        {{- end }}
       volumes:
       - name: upload-data
         {{- if (or .Values.persistence.uploadFiles.enabled .Values.persistence.uploadFiles.create) }}
