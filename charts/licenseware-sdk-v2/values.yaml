@@ -300,6 +300,7 @@ singleBinaryApp:
       # - hosts:
       #     - chart-example.local
       #   secretName: chart-example-tls
+  initContainers:
   labels:
     licenseware.io/type: single-binary
   livenessProbe:
@@ -336,6 +337,8 @@ singleBinaryApp:
     portName: http
     protocol: TCP
     type: ClusterIP
+  shareProcessNamespace:
+  sidecars:
   strategy: {}
   terminationGracePeriodSeconds: ""
   tolerations: []
