@@ -28,8 +28,8 @@ spec:
                 description: '{{`{{`}} printf "%.4g" $value {{`}}`}}% of the {{`{{`}} $labels.job {{`}}`}}/{{`{{`}} $labels.service {{`}}`}} targets in {{`{{`}} $labels.namespace {{`}}`}} namespace are down.'
                 runbook_url: https://runbooks.prometheus-operator.dev/runbooks/general/targetdown/
                 summary: One or more of the {{`{{`}} $labels.job {{`}}`}} targets are unreachable.
-      {{- range $key, $value := .Values.alertingRule.additionalRules }}
-      {{- tpl (toYaml .) $ | nindent 6 }}
+      {{- with .Values.alertingRule.additionalRules }}
+      {{- tpl (toYaml .) $ | nindent 10 }}
       {{- end }}
 {{- end }}
 {{- end }}
