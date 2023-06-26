@@ -36,6 +36,9 @@ extraVolumes: []
 
 fullnameOverride: "{{ .Release.Name }}"
 
+pdb:
+  create: false
+
 global:
   affinity: {}
   autoscaling:
@@ -343,6 +346,8 @@ singleBinaryApp:
   terminationGracePeriodSeconds: ""
   tolerations: []
 
+useStatefulSet: false
+
 webApp:
   affinity: {}
   args:
@@ -470,3 +475,5 @@ job:
   securityContext: {}
   terminationGracePeriodSeconds: ""
   tolerations: []
+
+podManagementPolicy: Parallel

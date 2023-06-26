@@ -1,6 +1,10 @@
 {{- if .Values.singleBinaryApp.enabled -}}
 apiVersion: apps/v1
+{{- if .Values.useStatefulSet }}
+kind: StatefulSet
+{{- else }}
 kind: Deployment
+{{- end }}
 metadata:
   name: {{ include "licenseware-sdk-v2.singleBinaryAppResourceName" . }}
   labels:
@@ -20,8 +24,24 @@ spec:
       {{- with .Values.singleBinaryApp.labels }}
       {{- tpl (toYaml .) $ | nindent 6 }}
       {{- end }}
+  {{- if .Values.useStatefulSet }}
+  serviceName: {{ include "licenseware-sdk-v2.singleBinaryAppResourceName" . }}
+  {{- with .Values.podManagementPolicy }}
+  podManagementPolicy: {{ . }}
+  {{- end }}
+  {{- end }}
+  {{- with .Values.revisionHistoryLimit }}
+  revisionHistoryLimit: {{ . }}
+  {{- end }}
+  {{- with .Values.minReadySeconds }}
+  minReadySeconds: {{ . }}
+  {{- end }}
   {{- with (default .Values.global.strategy .Values.singleBinaryApp.strategy) }}
+  {{- if $.Values.useStatefulSet }}
+  updateStrategy:
+  {{- else }}
   strategy:
+  {{- end }}
     {{- toYaml . | nindent 4 }}
   {{- end }}
   template:
@@ -142,11 +162,16 @@ spec:
         {{- tpl (toYaml .) $ | nindent 8 }}
         {{- end }}
       volumes:
-      - name: upload-data
+        {{- if not .Values.useStatefulSet }}
         {{- if (or .Values.persistence.uploadFiles.enabled .Values.persistence.uploadFiles.create) }}
+      - name: upload-data
         persistentVolumeClaim:
           claimName: {{ .Values.persistence.uploadFiles.claimName }}
         {{- else }}
+        emptyDir: {}
+        {{- end }}
+        {{- else if (and .Values.useStatefulSet (not .Values.persistence.uploadFiles.create)) }}
+      - name: upload-data
         emptyDir: {}
         {{- end }}
       - name: tmp
@@ -171,4 +196,22 @@ spec:
       tolerations:
         {{- tpl (toYaml .) $ | nindent 8 }}
       {{- end }}
+  {{- if .Values.useStatefulSet }}
+  {{- if .Values.persistence.uploadFiles.create }}
+  volumeClaimTemplates:
+  - metadata:
+      name: upload-data
+    spec:
+      {{- with .Values.persistence.uploadFiles.accessModes }}
+      accessModes:
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      resources:
+        requests:
+          storage: {{ .Values.persistence.uploadFiles.size }}
+      {{- with .Values.persistence.uploadFiles.storageClassName }}
+      storageClassName: {{ . }}
+      {{- end }}
+  {{- end }}
+  {{- end }}
 {{- end -}}
