@@ -1,3 +1,4 @@
+{{- if not .Values.useStatefulSet }}
 {{- if .Values.persistence.uploadFiles.create -}}
 {{- if .Values.persistence.uploadFiles.enabled -}}
 {{- fail "You can only either create or pass claimName, not both!" }}
@@ -21,4 +22,5 @@ spec:
   {{- with .Values.persistence.uploadFiles.storageClassName }}
   storageClassName: {{ . }}
   {{- end }}
+{{- end }}
 {{- end }}
