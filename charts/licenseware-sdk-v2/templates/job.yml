@@ -95,11 +95,16 @@ spec:
         {{- tpl (toYaml .) $ | nindent 8 }}
         {{- end }}
       volumes:
-      - name: upload-data
+        {{- if not .Values.useStatefulSet }}
         {{- if (or .Values.persistence.uploadFiles.enabled .Values.persistence.uploadFiles.create) }}
+      - name: upload-data
         persistentVolumeClaim:
           claimName: {{ .Values.persistence.uploadFiles.claimName }}
         {{- else }}
+        emptyDir: {}
+        {{- end }}
+        {{- else if (and .Values.useStatefulSet (not .Values.persistence.uploadFiles.create)) }}
+      - name: upload-data
         emptyDir: {}
         {{- end }}
       - name: tmp
