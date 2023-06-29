@@ -26,14 +26,9 @@ jobs:
             helm dep update $chart;
             helm package -d registry/ $chart;
           done
-      - name: Checkout gh-pages
-        uses: actions/checkout@v3
-        with:
-          ref: gh-pages
-          fetch-depth: 0
       - name: Update registry index
         run: helm repo index ./registry
-        - name: Publish to GitHub pages
+      - name: Publish to GitHub pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           keep_files: true
