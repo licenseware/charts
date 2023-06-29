@@ -24,26 +24,19 @@ jobs:
         run: |
           for chart in $(find charts/ -name Chart.yaml -exec dirname {} \;); do
             helm dep update $chart;
-            helm package -d docs/ $chart;
+            helm package -d registry/ $chart;
           done
-      - name: Publish to GitHub pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          keep_files: true
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
-          publish_branch: gh-pages
       - name: Checkout gh-pages
         uses: actions/checkout@v3
         with:
           ref: gh-pages
           fetch-depth: 0
       - name: Update registry index
-        run: helm repo index .
-      - name: Commit and push changes
-        run: |
-          git config --global user.name ${{ github.actor }}
-          git config --global user.email ${{ github.actor }}@users.noreply.github.com
-          git add .
-          git commit -m "Update registry index"
-          git push origin gh-pages
+        run: helm repo index ./registry
+        - name: Publish to GitHub pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          keep_files: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./registry
+          publish_branch: gh-pages

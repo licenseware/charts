@@ -1,0 +1,576 @@
+apiVersion: v1
+entries:
+  jupyter:
+  - apiVersion: v2
+    appVersion: 6.4.12
+    created: "2023-06-29T13:22:23.980781765+07:00"
+    description: Jupyter Notebook
+    digest: 22fd7b1f68f189fa68a40474d78359995e1eb476a95f8b88db8e90ab5c9abea5
+    icon: https://github.com/licenseware/helm-charts/raw/main/static/png/jupyter.png
+    name: jupyter
+    type: application
+    urls:
+    - jupyter-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
+    appVersion: 6.4.12
+    created: "2023-06-29T13:22:23.980352619+07:00"
+    description: Jupyter Notebook
+    digest: 85b4dadcc6eff1f4e12da21f477445f739677595c3da95264c811f5d75cb70bd
+    icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/jupyter.png
+    name: jupyter
+    type: application
+    urls:
+    - jupyter-0.2.2.tgz
+    version: 0.2.2
+  kafka-connect:
+  - apiVersion: v2
+    appVersion: 7.2.2
+    created: "2023-06-29T13:22:24.020502291+07:00"
+    dependencies:
+    - condition: kafka.create
+      name: kafka
+      repository: https://charts.bitnami.com/bitnami/
+      version: 19.0.x
+    - condition: schema-registry.create
+      name: schema-registry
+      repository: https://charts.bitnami.com/bitnami/
+      version: 6.0.x
+    description: Confluent Kafka connect Helm Chart with the ability to add plugins
+      as required
+    digest: 567b080c9f204c4e0f98b8f5e8378bc16d8e5256696a8892768381808ff0fde4
+    icon: https://github.com/licenseware/helm-charts/raw/main/static/png/kafka.png
+    keywords:
+    - kafka
+    - confluent
+    - connect
+    - kafka connect
+    - kafka connect sink
+    - kafka connect source
+    - kafka connect plugin
+    - kafka connect connector
+    - kafka connect transformer
+    - kafka connect transform
+    - stream
+    - streaming
+    - streaming platform
+    name: kafka-connect
+    type: application
+    urls:
+    - kafka-connect-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 7.2.2
+    created: "2023-06-29T13:22:23.998364919+07:00"
+    dependencies:
+    - condition: kafka.create
+      name: kafka
+      repository: https://charts.bitnami.com/bitnami/
+      version: 19.0.x
+    - condition: schema-registry.create
+      name: schema-registry
+      repository: https://charts.bitnami.com/bitnami/
+      version: 6.0.x
+    description: Confluent Kafka connect Helm Chart with the ability to add plugins
+      as required
+    digest: d69520be5137a98f29dcbb3e41f153791b883f67a18215e53c334f7092daa1de
+    icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/kafka.png
+    keywords:
+    - kafka
+    - confluent
+    - connect
+    - kafka connect
+    - kafka connect sink
+    - kafka connect source
+    - kafka connect plugin
+    - kafka connect connector
+    - kafka connect transformer
+    - kafka connect transform
+    - stream
+    - streaming
+    - streaming platform
+    name: kafka-connect
+    type: application
+    urls:
+    - kafka-connect-0.2.0.tgz
+    version: 0.2.0
+  ksqldb:
+  - apiVersion: v2
+    appVersion: 0.28.2
+    created: "2023-06-29T13:22:24.044901319+07:00"
+    dependencies:
+    - condition: kafka.create
+      name: kafka
+      repository: https://charts.bitnami.com/bitnami/
+      version: 19.0.x
+    description: Confluent ksqlDB Helm Chart
+    digest: db913c1e41f34e50f7d39ec03f70e965c5d77b5f5be2c15dd1da1c5de7325e83
+    icon: https://github.com/licenseware/helm-charts/raw/main/static/png/ksqldb.jpg
+    keywords:
+    - ksqldb
+    - confluent
+    - ksql
+    - kafka
+    - streaming
+    name: ksqldb
+    type: application
+    urls:
+    - ksqldb-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v2
+    appVersion: 0.28.2
+    created: "2023-06-29T13:22:24.032310625+07:00"
+    dependencies:
+    - condition: kafka.create
+      name: kafka
+      repository: https://charts.bitnami.com/bitnami/
+      version: 19.0.x
+    description: Confluent ksqlDB Helm Chart
+    digest: b7280ae28537ae92689880c2f6f7ba828098cf3d8ad00b31c657a52c85413552
+    icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/ksqldb.jpg
+    keywords:
+    - ksqldb
+    - confluent
+    - ksql
+    - kafka
+    - streaming
+    name: ksqldb
+    type: application
+    urls:
+    - ksqldb-0.3.0.tgz
+    version: 0.3.0
+  licenseware-sdk-v2:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-06-29T13:22:24.331131289+07:00"
+    dependencies:
+    - condition: redis.create
+      name: redis
+      repository: https://charts.bitnami.com/bitnami/
+      version: 17.0.x
+    - condition: mongodb.create
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami/
+      version: 13.1.x
+    - condition: mongodb-sharded.create
+      name: mongodb-sharded
+      repository: https://charts.bitnami.com/bitnami/
+      version: 6.1.x
+    - condition: mongo-express.create
+      name: mongo-express
+      repository: https://cowboysysop.github.io/charts/
+      version: 2.6.x
+    - condition: jupyter.create
+      name: jupyter
+      repository: https://licenseware.github.io/charts/
+      version: 0.x.x
+    - condition: postgresql.create
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami/
+      version: 12.1.x
+    - alias: pgadmin
+      condition: pgadmin.create
+      name: pgadmin4
+      repository: https://helm.runix.net/
+      version: 1.13.x
+    description: A reusable chart for Licenseware applications
+    digest: 16e20c2de520a7c15aead9bb05c86b0936a15ab74322a945de6a39063f9f6d43
+    icon: https://github.com/licenseware/helm-charts/raw/main/static/png/licenseware.png
+    name: licenseware-sdk-v2
+    type: application
+    urls:
+    - licenseware-sdk-v2-0.12.4.tgz
+    version: 0.12.4
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-06-29T13:22:24.295302968+07:00"
+    dependencies:
+    - condition: redis.create
+      name: redis
+      repository: https://charts.bitnami.com/bitnami/
+      version: 17.0.x
+    - condition: mongodb.create
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami/
+      version: 13.1.x
+    - condition: mongodb-sharded.create
+      name: mongodb-sharded
+      repository: https://charts.bitnami.com/bitnami/
+      version: 6.1.x
+    - condition: mongo-express.create
+      name: mongo-express
+      repository: https://cowboysysop.github.io/charts/
+      version: 2.6.x
+    - condition: jupyter.create
+      name: jupyter
+      repository: https://licenseware.github.io/charts/
+      version: 0.x.x
+    - condition: postgresql.create
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami/
+      version: 12.1.x
+    - alias: pgadmin
+      condition: pgadmin.create
+      name: pgadmin4
+      repository: https://helm.runix.net/
+      version: 1.13.x
+    description: A reusable chart for Licenseware applications
+    digest: 2987eb1ea9da4e0120249409e2bdfd3ebd209e96d87e985cf8e4991cd61ed114
+    icon: https://github.com/licenseware/helm-charts/raw/main/static/png/licenseware.png
+    name: licenseware-sdk-v2
+    type: application
+    urls:
+    - licenseware-sdk-v2-0.12.3.tgz
+    version: 0.12.3
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-06-29T13:22:24.260438247+07:00"
+    dependencies:
+    - condition: redis.create
+      name: redis
+      repository: https://charts.bitnami.com/bitnami/
+      version: 17.0.x
+    - condition: mongodb.create
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami/
+      version: 13.1.x
+    - condition: mongodb-sharded.create
+      name: mongodb-sharded
+      repository: https://charts.bitnami.com/bitnami/
+      version: 6.1.x
+    - condition: mongo-express.create
+      name: mongo-express
+      repository: https://cowboysysop.github.io/charts/
+      version: 2.6.x
+    - condition: jupyter.create
+      name: jupyter
+      repository: https://licenseware.github.io/charts/
+      version: 0.x.x
+    - condition: postgresql.create
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami/
+      version: 12.1.x
+    - alias: pgadmin
+      condition: pgadmin.create
+      name: pgadmin4
+      repository: https://helm.runix.net/
+      version: 1.13.x
+    description: A reusable chart for Licenseware applications
+    digest: 1285680b8ed246237661e9ab00a63b0a34f91ba0ada944f3d9d38cdcdfcd2502
+    icon: https://github.com/licenseware/helm-charts/raw/main/static/png/licenseware.png
+    name: licenseware-sdk-v2
+    type: application
+    urls:
+    - licenseware-sdk-v2-0.12.2.tgz
+    version: 0.12.2
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-06-29T13:22:24.242910266+07:00"
+    dependencies:
+    - condition: redis.create
+      name: redis
+      repository: https://charts.bitnami.com/bitnami/
+      version: 17.0.x
+    - condition: mongodb.create
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami/
+      version: 13.1.x
+    - condition: mongodb-sharded.create
+      name: mongodb-sharded
+      repository: https://charts.bitnami.com/bitnami/
+      version: 6.1.x
+    - condition: mongo-express.create
+      name: mongo-express
+      repository: https://cowboysysop.github.io/charts/
+      version: 2.6.x
+    - condition: jupyter.create
+      name: jupyter
+      repository: https://licenseware.github.io/charts/
+      version: 0.x.x
+    - condition: postgresql.create
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami/
+      version: 12.1.x
+    - alias: pgadmin
+      condition: pgadmin.create
+      name: pgadmin4
+      repository: https://helm.runix.net/
+      version: 1.13.x
+    description: A reusable chart for Licenseware applications
+    digest: 36b0eb78889fe557add98feaef3fb993ba2813af9bbac5b50a0574be5b5d6c2d
+    icon: https://github.com/licenseware/helm-charts/raw/main/static/png/licenseware.png
+    name: licenseware-sdk-v2
+    type: application
+    urls:
+    - licenseware-sdk-v2-0.12.1.tgz
+    version: 0.12.1
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-06-29T13:22:24.224062909+07:00"
+    dependencies:
+    - condition: redis.create
+      name: redis
+      repository: https://charts.bitnami.com/bitnami/
+      version: 17.0.x
+    - condition: mongodb.create
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami/
+      version: 13.1.x
+    - condition: mongodb-sharded.create
+      name: mongodb-sharded
+      repository: https://charts.bitnami.com/bitnami/
+      version: 6.1.x
+    - condition: mongo-express.create
+      name: mongo-express
+      repository: https://cowboysysop.github.io/charts/
+      version: 2.6.x
+    - condition: jupyter.create
+      name: jupyter
+      repository: https://licenseware.github.io/charts/
+      version: 0.x.x
+    - condition: postgresql.create
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami/
+      version: 12.1.x
+    - alias: pgadmin
+      condition: pgadmin.create
+      name: pgadmin4
+      repository: https://helm.runix.net/
+      version: 1.13.x
+    description: A reusable chart for Licenseware applications
+    digest: 2f068fc3f069e1e5b4ef49ebe5d28314f396cba33759d4b5086a60010545688d
+    icon: https://github.com/licenseware/helm-charts/raw/main/static/png/licenseware.png
+    name: licenseware-sdk-v2
+    type: application
+    urls:
+    - licenseware-sdk-v2-0.12.0.tgz
+    version: 0.12.0
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-06-29T13:22:24.205958006+07:00"
+    dependencies:
+    - condition: redis.create
+      name: redis
+      repository: https://charts.bitnami.com/bitnami/
+      version: 17.0.x
+    - condition: mongodb.create
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami/
+      version: 13.1.x
+    - condition: mongodb-sharded.create
+      name: mongodb-sharded
+      repository: https://charts.bitnami.com/bitnami/
+      version: 6.1.x
+    - condition: mongo-express.create
+      name: mongo-express
+      repository: https://cowboysysop.github.io/charts/
+      version: 2.6.x
+    - condition: jupyter.create
+      name: jupyter
+      repository: https://licenseware.github.io/charts/
+      version: 0.x.x
+    - condition: postgresql.create
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami/
+      version: 12.1.x
+    - alias: pgadmin
+      condition: pgadmin.create
+      name: pgadmin4
+      repository: https://helm.runix.net/
+      version: 1.13.x
+    description: A reusable chart for Licenseware applications
+    digest: 6de974f46c54bcb7a020ffb2a5a069c6bc43b4b427aee99fa6db6aef778d36fe
+    icon: https://github.com/licenseware/helm-charts/raw/main/static/png/licenseware.png
+    name: licenseware-sdk-v2
+    type: application
+    urls:
+    - licenseware-sdk-v2-0.11.1.tgz
+    version: 0.11.1
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-06-29T13:22:24.174137989+07:00"
+    dependencies:
+    - condition: redis.create
+      name: redis
+      repository: https://charts.bitnami.com/bitnami/
+      version: 17.0.x
+    - condition: mongodb.create
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami/
+      version: 13.1.x
+    - condition: mongodb-sharded.create
+      name: mongodb-sharded
+      repository: https://charts.bitnami.com/bitnami/
+      version: 6.1.x
+    - condition: mongo-express.create
+      name: mongo-express
+      repository: https://cowboysysop.github.io/charts/
+      version: 2.6.x
+    - condition: jupyter.create
+      name: jupyter
+      repository: https://licenseware.github.io/charts/
+      version: 0.x.x
+    - condition: postgresql.create
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami/
+      version: 12.1.x
+    - alias: pgadmin
+      condition: pgadmin.create
+      name: pgadmin4
+      repository: https://helm.runix.net/
+      version: 1.13.x
+    description: A reusable chart for Licenseware applications
+    digest: aec9f0e5e6dd098ad38788c00cf5bb2c59df568d5d76e450c98f6ad6ba74dc4c
+    icon: https://github.com/licenseware/helm-charts/raw/main/static/png/licenseware.png
+    name: licenseware-sdk-v2
+    type: application
+    urls:
+    - licenseware-sdk-v2-0.11.0.tgz
+    version: 0.11.0
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-06-29T13:22:24.121962114+07:00"
+    dependencies:
+    - condition: redis.create
+      name: redis
+      repository: https://charts.bitnami.com/bitnami/
+      version: 17.0.x
+    - condition: mongodb.create
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami/
+      version: 13.1.x
+    - condition: mongodb-sharded.create
+      name: mongodb-sharded
+      repository: https://charts.bitnami.com/bitnami/
+      version: 6.1.x
+    - condition: mongo-express.create
+      name: mongo-express
+      repository: https://cowboysysop.github.io/charts/
+      version: 2.6.x
+    - condition: jupyter.create
+      name: jupyter
+      repository: https://licenseware.github.io/charts/
+      version: 0.x.x
+    - condition: postgresql.create
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami/
+      version: 12.1.x
+    - alias: pgadmin
+      condition: pgadmin.create
+      name: pgadmin4
+      repository: https://helm.runix.net/
+      version: 1.13.x
+    description: A reusable chart for Licenseware applications
+    digest: 51c3052c33098bb74d0c3c83418f51ef1ee4e67eab04935d2952f472a296982c
+    icon: https://github.com/licenseware/helm-charts/raw/main/static/png/licenseware.png
+    name: licenseware-sdk-v2
+    type: application
+    urls:
+    - licenseware-sdk-v2-0.10.1.tgz
+    version: 0.10.1
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-06-29T13:22:24.078238433+07:00"
+    dependencies:
+    - condition: redis.create
+      name: redis
+      repository: https://charts.bitnami.com/bitnami/
+      version: 17.0.x
+    - condition: mongodb.create
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami/
+      version: 13.1.x
+    - condition: mongodb-sharded.create
+      name: mongodb-sharded
+      repository: https://charts.bitnami.com/bitnami/
+      version: 6.1.x
+    - condition: mongo-express.create
+      name: mongo-express
+      repository: https://cowboysysop.github.io/charts/
+      version: 2.6.x
+    - condition: jupyter.create
+      name: jupyter
+      repository: https://licenseware.github.io/charts/
+      version: 0.x.x
+    - condition: postgresql.create
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami/
+      version: 12.1.x
+    - alias: pgadmin
+      condition: pgadmin.create
+      name: pgadmin4
+      repository: https://helm.runix.net/
+      version: 1.13.x
+    description: A reusable chart for Licenseware applications
+    digest: 436d4876a7841b02397d4ba00b1cc6111ef7e359a9fcd15bea68b51938f966cc
+    icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/licenseware.png
+    name: licenseware-sdk-v2
+    type: application
+    urls:
+    - licenseware-sdk-v2-0.10.0.tgz
+    version: 0.10.0
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-06-29T13:22:24.35147279+07:00"
+    dependencies:
+    - condition: redis.create
+      name: redis
+      repository: https://charts.bitnami.com/bitnami/
+      version: 17.0.x
+    - condition: mongodb.create
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami/
+      version: 13.1.x
+    - condition: mongodb-sharded.create
+      name: mongodb-sharded
+      repository: https://charts.bitnami.com/bitnami/
+      version: 6.1.x
+    - condition: mongo-express.create
+      name: mongo-express
+      repository: https://cowboysysop.github.io/charts/
+      version: 2.6.x
+    - condition: jupyter.create
+      name: jupyter
+      repository: https://licenseware.github.io/charts/
+      version: 0.x.x
+    - condition: postgresql.create
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami/
+      version: 12.1.x
+    - alias: pgadmin
+      condition: pgadmin.create
+      name: pgadmin4
+      repository: https://helm.runix.net/
+      version: 1.13.x
+    description: A reusable chart for Licenseware applications
+    digest: 656974b6fe2aec22ce331afda19198328b8d517ac13c25efd99e7fef8da58f92
+    icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/licenseware.png
+    name: licenseware-sdk-v2
+    type: application
+    urls:
+    - licenseware-sdk-v2-0.9.5.tgz
+    version: 0.9.5
+  mssql:
+  - apiVersion: v2
+    appVersion: 2019-CU16-GDR1-ubuntu-20.04
+    created: "2023-06-29T13:22:24.352208241+07:00"
+    description: Microsoft SQL Server 2019 Express
+    digest: c182e3d9d0b8eedf6839376e8c5dde6a2e4c1b48b756e4ddb4b9a9eb15ad4eac
+    icon: https://github.com/licenseware/helm-charts/raw/main/static/png/mssql.png
+    name: mssql
+    type: application
+    urls:
+    - mssql-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 2019-CU16-GDR1-ubuntu-20.04
+    created: "2023-06-29T13:22:24.351848455+07:00"
+    description: Microsoft SQL Server 2019 Express
+    digest: b7eab84aefd9ddc18ebdb8a5da50430820e02aa38d590f7b0f1b6b8b5b2e4c25
+    icon: https://github.com/licenseware/helm-charts/raw/gh-pages/static/png/mssql.png
+    name: mssql
+    type: application
+    urls:
+    - mssql-0.1.1.tgz
+    version: 0.1.1
+generated: "2023-06-29T13:22:23.979831952+07:00"
