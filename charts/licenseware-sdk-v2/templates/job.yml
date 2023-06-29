@@ -103,7 +103,7 @@ spec:
         {{- else }}
         emptyDir: {}
         {{- end }}
-        {{- else if .Values.useStatefulSet }}
+        {{- else }}
       - name: upload-data
         emptyDir: {}
         {{- end }}
