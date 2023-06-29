@@ -77,8 +77,6 @@ spec:
             {{- tpl (toYaml .) $ | nindent 12 }}
           {{- end }}
           volumeMounts:
-          - name: upload-data
-            mountPath: {{ .Values.configMapPairs.FILE_UPLOAD_PATH }}
           - name: tmp
             mountPath: /tmp
           {{- if .Values.persistence.sourceCode.enabled }}
@@ -95,18 +93,6 @@ spec:
         {{- tpl (toYaml .) $ | nindent 8 }}
         {{- end }}
       volumes:
-        {{- if not .Values.useStatefulSet }}
-        {{- if (or .Values.persistence.uploadFiles.enabled .Values.persistence.uploadFiles.create) }}
-      - name: upload-data
-        persistentVolumeClaim:
-          claimName: {{ .Values.persistence.uploadFiles.claimName }}
-        {{- else }}
-        emptyDir: {}
-        {{- end }}
-        {{- else }}
-      - name: upload-data
-        emptyDir: {}
-        {{- end }}
       - name: tmp
         emptyDir: {}
       {{- if .Values.persistence.sourceCode.enabled }}
