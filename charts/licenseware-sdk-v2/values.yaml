@@ -173,7 +173,7 @@ persistence:
     claimName: ""
     create: false
     enabled: true
-    size: 1Gi
+    size: 10Gi
     storageClassName: ""
 
 pgadmin:
