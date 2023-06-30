@@ -277,9 +277,10 @@ alertingRule:
 singleBinaryApp:
   affinity: {}
   args:
-    - sh
-    - "-c"
-    - honcho start
+    []
+    # - sh
+    # - "-c"
+    # - honcho start
   autoscaling:
     enabled: false
     maxReplicas: 10
