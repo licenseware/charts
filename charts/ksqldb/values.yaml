@@ -114,6 +114,14 @@ configMapPairs:
   # KSQL_KSQL_SERVICE_ID: ksql_standalone_1
   # KSQL_KSQL_QUERIES_FILE: /path/in/container/queries.sql
 
+secretPairs: {}
+
+extraEnvFrom: []
+# - secretRef:
+#     name: my-secret
+# - configMapRef:
+#     name: my-configmap
+
 initContainers: []
 
 kafka:
