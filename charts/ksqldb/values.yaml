@@ -116,6 +116,12 @@ configMapPairs:
 
 secretPairs: {}
 
+extraEnvFrom: []
+# - secretRef:
+#     name: my-secret
+# - configMapRef:
+#     name: my-configmap
+
 initContainers: []
 
 kafka:

@@ -54,6 +54,11 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "ksqldb.fullname" . }}
+            - secretRef:
+                name: {{ include "ksqldb.fullname" . }}
+            {{- with .Values.extraEnvFrom }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.extraVolumeMounts }}
