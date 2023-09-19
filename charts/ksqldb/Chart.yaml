@@ -1,9 +1,9 @@
 apiVersion: v2
 
 name: ksqldb
-version: 0.4.0
+version: 0.4.1
 
-appVersion: 0.28.2
+appVersion: 0.29.0
 
 description: Confluent ksqlDB Helm Chart
 type: application
