@@ -454,6 +454,7 @@ workerApp:
   tolerations: []
 
 job:
+  initContainers: []
   activeDeadlineSeconds: null
   affinity: {}
   args:
