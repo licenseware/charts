@@ -41,7 +41,7 @@ dependencies:
   - condition: mongo-express.create
     name: mongo-express
     repository: https://cowboysysop.github.io/charts/
-    version: 2.6.x
+    version: 2.9.x
   - condition: jupyter.create
     name: jupyter
     repository: https://licenseware.github.io/charts/
