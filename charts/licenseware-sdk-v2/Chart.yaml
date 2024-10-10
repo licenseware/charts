@@ -33,7 +33,7 @@ dependencies:
   - condition: mongodb.create
     name: mongodb
     repository: https://charts.bitnami.com/bitnami/
-    version: 13.1.x
+    version: 13.18.x
   - condition: mongodb-sharded.create
     name: mongodb-sharded
     repository: https://charts.bitnami.com/bitnami/
