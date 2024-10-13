@@ -29,7 +29,7 @@ dependencies:
   - condition: redis.create
     name: redis
     repository: https://charts.bitnami.com/bitnami/
-    version: 17.0.x
+    version: 17.17.x
   - condition: mongodb.create
     name: mongodb
     repository: https://charts.bitnami.com/bitnami/
