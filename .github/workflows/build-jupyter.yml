@@ -32,7 +32,7 @@ jobs:
         run: |
           echo "IMAGE_TAG=$(grep appVersion ./charts/jupyter/Chart.yaml | awk '{print $2}')" >> $GITHUB_ENV
       - name: Build Jupyter Notebook
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6
         with:
           context: ./scripts/jupyter/
           labels: |
