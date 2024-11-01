@@ -1,4 +1,8 @@
-name: update-registry-index
+name: ci
+
+concurrency:
+  cancel-in-progress: ${{ ! startsWith(github.ref, 'refs/tags/') }}
+  group: ci-${{ github.ref_name }}-${{ github.event_name }}
 
 on:
   push:
