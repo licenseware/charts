@@ -58,6 +58,9 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "kafka-connect.fullname" . }}
+            {{- with .Values.extraEnvFrom }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.extraVolumeMounts }}
