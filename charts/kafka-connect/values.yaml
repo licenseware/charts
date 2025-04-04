@@ -163,6 +163,22 @@ initContainers:
   #     - name: plugin
   #       mountPath: /usr/share/confluent-hub-components
 
+# Sidecar containers
+sidecars: []
+# - name: sidecar-example
+#   image: example/sidecar:latest
+#   imagePullPolicy: IfNotPresent
+#   resources:
+#     limits:
+#       cpu: 100m
+#       memory: 128Mi
+#     requests:
+#       cpu: 50m
+#       memory: 64Mi
+#   volumeMounts:
+#     - name: shared-data
+#       mountPath: /shared-data
+
 kafka:
   create: true
   fullnameOverride: kafka-connect-kafka

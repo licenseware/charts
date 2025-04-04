@@ -67,6 +67,9 @@ spec:
           volumeMounts:
             {{- tpl (toYaml .) $ | nindent 12 }}
           {{- end }}
+          {{- if .Values.sidecars }}
+          {{- toYaml .Values.sidecars | nindent 10 }}
+          {{- end }}
       {{- with .Values.extraVolumes }}
       volumes:
         {{- tpl (toYaml .) $ | nindent 8 }}
