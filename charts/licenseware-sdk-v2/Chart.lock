@@ -10,15 +10,15 @@ dependencies:
   version: 6.1.14
 - name: mongo-express
   repository: https://cowboysysop.github.io/charts/
-  version: 2.6.7
+  version: 6.5.2
 - name: jupyter
   repository: https://licenseware.github.io/charts/
-  version: 0.2.2
+  version: 0.2.3
 - name: postgresql
   repository: https://charts.bitnami.com/bitnami/
   version: 12.1.15
 - name: pgadmin4
   repository: https://helm.runix.net/
   version: 1.13.11
-digest: sha256:0f8ebcfb2f2a336523c00389da98f3dbb93cc7a645ca8afd88c7d8d7d1091223
-generated: "2023-03-10T06:56:43.244968053+07:00"
+digest: sha256:8e1fb8c0e69c189c570e81226977b597067e342398afffc1a3dc499a8dcca8b4
+generated: "2024-11-01T05:53:15.19430282Z"
