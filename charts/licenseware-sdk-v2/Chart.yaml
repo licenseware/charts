@@ -54,4 +54,4 @@ dependencies:
     alias: pgadmin
     name: pgadmin4
     repository: https://helm.runix.net/
-    version: 1.13.x
+    version: 1.57.x
