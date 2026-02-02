@@ -1,9 +1,9 @@
 dependencies:
 - name: kafka
   repository: https://charts.bitnami.com/bitnami/
-  version: 19.0.2
+  version: 32.4.3
 - name: schema-registry
   repository: https://charts.bitnami.com/bitnami/
   version: 6.0.2
-digest: sha256:f103b900f71f724cde9e24ba46889e694a3be2b7586713845916d8d20f5d959d
-generated: "2022-11-04T15:35:15.636524534+07:00"
+digest: sha256:8be84e6f3a2dcd982b265df6ce1bfc2e63ed7de0f39dc3163dc7c7bb81766ba2
+generated: "2026-02-02T19:38:56.690773474Z"
