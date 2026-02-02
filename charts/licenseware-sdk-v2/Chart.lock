@@ -13,12 +13,12 @@ dependencies:
   version: 2.6.7
 - name: jupyter
   repository: https://licenseware.github.io/charts/
-  version: 0.2.2
+  version: 0.2.3
 - name: postgresql
   repository: https://charts.bitnami.com/bitnami/
-  version: 12.1.15
+  version: 12.12.10
 - name: pgadmin4
   repository: https://helm.runix.net/
   version: 1.13.11
-digest: sha256:0f8ebcfb2f2a336523c00389da98f3dbb93cc7a645ca8afd88c7d8d7d1091223
-generated: "2023-03-10T06:56:43.244968053+07:00"
+digest: sha256:79b8fa9e1ca2a23ffdbd0910414cf046326b873f53120433530664d39bbab542
+generated: "2026-02-02T19:35:51.660991747Z"
