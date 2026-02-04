@@ -17,28 +17,28 @@ fullnameOverride: ""
 kafka:
   # Cluster ID for KRaft mode (generate with: kafka-storage.sh random-uuid)
   clusterId: "MkU3OEVBNTcwNTJENDM2Qk"
-  
+
   # Number of partitions for auto-created topics
   numPartitions: 1
-  
+
   # Default replication factor
   defaultReplicationFactor: 1
-  
+
   # Min in-sync replicas
   minInsyncReplicas: 1
-  
+
   # Enable auto topic creation
   autoCreateTopicsEnable: true
-  
+
   # Delete topic enable
   deleteTopicEnable: true
-  
+
   # Log retention hours
   logRetentionHours: 168
-  
+
   # Heap options
   heapOpts: "-Xmx1024m -Xms1024m"
-  
+
   # Additional Kafka configuration (will be added to server.properties)
   extraConfig: {}
 

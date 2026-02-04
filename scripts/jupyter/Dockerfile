@@ -40,7 +40,7 @@ COPY --from=odbc-init ${ODBC_DIR}/mssql-release.list /etc/apt/sources.list.d/
 
 RUN apt install -y gnupg && \
     apt update && \
-    apt install -y build-essential unixodbc-dev && \ 
+    apt install -y build-essential unixodbc-dev && \
     ACCEPT_EULA=Y apt install -y build-essential unixodbc-dev libgssapi-krb5-2 msodbcsql18
 
 USER ${USER}

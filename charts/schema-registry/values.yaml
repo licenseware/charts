@@ -15,13 +15,13 @@ fullnameOverride: ""
 schemaRegistry:
   # Kafka bootstrap servers
   kafkaBootstrapServers: "kafka:9092"
-  
+
   # Schema Registry host name
   hostName: "schema-registry"
-  
+
   # Heap options
   heapOpts: "-Xmx512m -Xms512m"
-  
+
   # Additional configuration
   extraConfig: {}
 
