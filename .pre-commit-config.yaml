@@ -43,7 +43,6 @@ repos:
       - id: destroyed-symlinks
       - id: file-contents-sorter
       - id: fix-byte-order-marker
-      - id: fix-encoding-pragma
       - id: forbid-new-submodules
       - id: forbid-submodules
       - id: mixed-line-ending

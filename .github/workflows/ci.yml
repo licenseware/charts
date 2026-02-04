@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Install Helm ${{ env.HELM_VERSION }}
@@ -26,14 +26,15 @@ jobs:
           DESIRED_VERSION: ${{ env.HELM_VERSION }}
       - name: Update chart packages
         run: |
-          for chart in $(find charts/ -name Chart.yaml -exec dirname {} \;); do
-            helm dep update $chart;
-            helm package -d registry/ $chart;
+          find charts/ -name Chart.yaml | while IFS= read -r chartfile; do
+            chart=$(dirname "$chartfile")
+            helm dep update "$chart"
+            helm package -d registry/ "$chart"
           done
       - name: Update registry index
         run: helm repo index ./registry
       - name: Publish to GitHub pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           keep_files: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
