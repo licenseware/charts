@@ -1,0 +1,25 @@
+apiVersion: v2
+name: kafka
+description: Apache Kafka Helm Chart using official Docker images (KRaft mode - no Zookeeper)
+# NOTE: This chart is designed for development/testing with a single replica.
+# Multi-replica KRaft clusters are not currently supported.
+type: application
+version: 0.1.0
+appVersion: "3.9.0"
+icon: https://kafka.apache.org/logos/kafka_logo--simple.png
+
+keywords:
+  - kafka
+  - apache-kafka
+  - streaming
+  - messaging
+  - event-streaming
+
+maintainers:
+  - name: licenseware
+    url: https://github.com/licenseware
+
+home: https://kafka.apache.org/
+sources:
+  - https://github.com/apache/kafka
+  - https://hub.docker.com/r/apache/kafka

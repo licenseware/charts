@@ -179,39 +179,25 @@ sidecars: []
 #     - name: shared-data
 #       mountPath: /shared-data
 
+# Kafka subchart configuration (uses official Apache Kafka image with KRaft mode)
 kafka:
   create: true
   fullnameOverride: kafka-connect-kafka
   nameOverride: kafka-connect-kafka
-  defaultReplicationFactor: 1
-  deleteTopicEnable: true
-  heapOpts: "-Xmx1024m -Xms1024m"
-  numPartitions: 1
+  replicaCount: 1
+  kafka:
+    numPartitions: 1
+    defaultReplicationFactor: 1
+    minInsyncReplicas: 1
+    autoCreateTopicsEnable: true
+    deleteTopicEnable: true
+    heapOpts: "-Xmx1024m -Xms1024m"
   persistence:
     enabled: false
-  provisioning:
-    enabled: true
-    topics:
-      - name: kafka-connect-offset
-        config:
-          cleanup.policy: compact
-      - name: kafka-connect-config
-        config:
-          cleanup.policy: compact
-      - name: kafka-connect-status
-        config:
-          cleanup.policy: compact
-  replicaCount: 1
-  zookeeper:
-    persistence:
-      enabled: false
 
+# Schema Registry subchart configuration (uses official Confluent images)
 schema-registry:
   create: true
   externalKafka:
     brokers:
       - PLAINTEXT://kafka-connect-kafka:9092
-  kafka:
-    enabled: false
-  zookeeper:
-    enabled: false

@@ -1,0 +1,23 @@
+apiVersion: v2
+name: schema-registry
+description: Confluent Schema Registry Helm Chart using official Confluent images
+type: application
+version: 0.1.0
+appVersion: "7.7.1"
+icon: https://github.com/licenseware/helm-charts/raw/main/static/png/confluent.png
+
+keywords:
+  - schema-registry
+  - confluent
+  - kafka
+  - avro
+  - protobuf
+
+maintainers:
+  - name: licenseware
+    url: https://github.com/licenseware
+
+home: https://docs.confluent.io/platform/current/schema-registry/
+sources:
+  - https://github.com/confluentinc/schema-registry
+  - https://hub.docker.com/r/confluentinc/cp-schema-registry

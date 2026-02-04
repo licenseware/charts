@@ -1,7 +1,7 @@
 apiVersion: v2
 
 name: ksqldb
-version: 0.4.1
+version: 0.5.0
 
 appVersion: 0.29.0
 
@@ -16,8 +16,9 @@ keywords:
   - kafka
   - streaming
 
+# Uses custom Kafka chart with official Apache Kafka images (KRaft mode - no Zookeeper)
 dependencies:
   - condition: kafka.create
     name: kafka
-    repository: https://charts.bitnami.com/bitnami/
-    version: 19.0.x
+    repository: file://../kafka
+    version: 1.x.x
