@@ -9,31 +9,47 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  packages: write
+
 env:
-  HELM_VERSION: v3.11.2
+  HELM_VERSION: v3.14.0
+  REGISTRY: ghcr.io
 
 jobs:
-  update-registry-index:
+  publish-charts:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - name: Install Helm ${{ env.HELM_VERSION }}
-        run: curl -fsSL https://git.io/get_helm.sh | bash
-        env:
-          DESIRED_VERSION: ${{ env.HELM_VERSION }}
-      - name: Update chart packages
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: ${{ env.HELM_VERSION }}
+
+      - name: Login to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
+
+      - name: Package and Push Charts
         run: |
           find charts/ -name Chart.yaml | while IFS= read -r chartfile; do
             chart=$(dirname "$chartfile")
-            helm dep update "$chart"
+            helm dependency update "$chart"
             helm package -d registry/ "$chart"
           done
-      - name: Update registry index
+          # Push to OCI
+          for pkg in registry/*.tgz; do
+            helm push "$pkg" oci://${{ env.REGISTRY }}/${{ github.repository_owner }}/charts
+          done
+
+      - name: Update registry index (gh-pages)
         run: helm repo index ./registry
-      - name: Publish to GitHub pages
+
+      - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           keep_files: true
