@@ -31,8 +31,8 @@ dependencies:
   - condition: kafka.create
     name: kafka
     repository: file://../kafka
-    version: 1.x.x
+    version: 0.x.x
   - condition: schema-registry.create
     name: schema-registry
     repository: file://../schema-registry
-    version: 1.x.x
+    version: 0.x.x

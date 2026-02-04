@@ -21,4 +21,4 @@ dependencies:
   - condition: kafka.create
     name: kafka
     repository: file://../kafka
-    version: 1.x.x
+    version: 0.x.x
